@@ -1,0 +1,13 @@
+.Navbar {
+    background-color: #98ffed;
+}
+
+.nav-link{
+    color: black !important;
+}
+
+/* .footer {
+    position:sticky;
+    left: 0; right: 0; bottom: 0;
+    height: [footer-height];
+} */
