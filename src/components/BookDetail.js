@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 function BookDetail() {
@@ -43,21 +44,28 @@ function BookDetail() {
         </Row>
         <Row>
             <Col>
-                <ListGroup className="align-self-start w-75" key={p.postId}>
-                    <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#F5F1E3' }}>
-                        <div className="d-flex w-100 justify-content-end">
-                        <small>{p.updatedAt}</small>
-                        </div>
-                        <p class="mb-1" style={{paddingLeft: '16px'}}>{p.post}</p>
-                        <div className="d-flex w-100 justify-content-start">
-                        <Link to={`/profile/${p.User.userId}`} className="nav-link">{p.User.username}</Link>       
-                        </div>
-                        <div className="d-flex w-100 justify-content-end">
-                        {users && users.userId === p.userId && <Link to={`/edit/${p.postId}`} className="btn btn-primary text me-2" style={{backgroundColor: '#A2A3BB', color: '#000807', marginBottom: '5px'}}>Edit</Link>}{' '}
-                        {users && users.userId === p.userId && <Button style={{backgroundColor: '#000807', color: '#A2A3BB', marginBottom: '5px'}} onClick={handleDelete.bind(this, p.postId)}>Delete Coffee</Button>}{' '}
+                <ListGroup className="align-self-start w-80">
+                    <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#98ffed' }}>
+                        <Row style={{paddingBottom: '10px'}}>
+                            <Col>
+                                <div className="d-flex w-100 justify-content-start">
+                                    <small>Star Rating</small> 
+                                </div>
+                            </Col>
+                            <Col>
+                                <div className="d-flex w-100 justify-content-end">
+                                    <Link className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '}
+                                    <Link style={{color: '#000807'}}>Delete</Link>{' '}   
+                                </div>
+
+                            </Col>
+                        </Row>
+                        <p class="mb-1" style={{paddingBottom: '5px'}}>Review</p>
+                        <div className="d-flex w-100 justify-content-end" style={{paddingBottom: '13px'}}>
+                            <Link className="nav-link" style={{color: 'white'}}>Username</Link> 
                         </div>
                     </ListGroup.Item>
-                    </ListGroup>
+                </ListGroup>
             </Col>
         </Row>
     </Container>
