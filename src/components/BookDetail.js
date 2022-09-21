@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
 function BookDetail() {
+
+    
 
   return (
     <Container>
@@ -64,7 +66,7 @@ function BookDetail() {
 
                             </Col>
                         </Row>
-                        <p class="mb-1" style={{paddingBottom: '5px'}}>Review</p>
+                        <p className="mb-1" style={{paddingBottom: '5px'}}>Review</p>
                         <div className="d-flex w-100 justify-content-end" style={{paddingBottom: '13px'}}>
                             <Link className="nav-link" style={{color: 'white'}}>Username</Link> 
                         </div>
