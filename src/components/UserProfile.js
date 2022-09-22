@@ -25,24 +25,38 @@ function UserProfile() {
                 <Col xs={12} md={12} lg={12} xl={12}>
                     <ListGroup className="align-self-start w-80">
                         <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#98ffed' }}>
-                            <Row style={{paddingBottom: '10px'}}>
-                                <Col>
-                                    <div className="d-flex w-100 justify-content-start">
+                            <Row>
+                                <Col xs={3} sm={3} md={2} lg={1} xl={1}>
+                                    <img 
+                                        alt=""
+                                        // src={}
+                                        width="100"
+                                        height="115"
+                                        style={{ padding: "5px" }}
+                                    />{" "}
+                                </Col>
+                                <Col xs={5} sm={5} md={8} lg={9} xl={9}>
+                                    <div className="d-flex w-100 justify-content-start" style={{paddingBottom: '13px'}}>
+                                        <Link className='ml-auto me-2'>Book Title</Link>
                                         <small>Star Rating</small> 
                                     </div>
+                                    <div>
+                                        <p className="mb-1" style={{paddingBottom: '5px'}}>Review</p>
+                                    </div>
                                 </Col>
-                                <Col>
+                                <Col xs={4} sm={4} md={2} lg={2} xl={2}>
                                     <div className="d-flex w-100 justify-content-end">
                                         <Link className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '}
                                         <Link style={{color: '#000807'}}>Delete</Link>{' '}   
                                     </div>
 
+                                </Col>  
+                            </Row>
+                            <Row>
+                                <Col className="d-flex w-100 justify-content-end" style={{paddingBottom: '5px'}}>    
+                                    <Link className="nav-link" style={{color: 'white'}}>Username</Link> 
                                 </Col>
                             </Row>
-                            <p className="mb-1" style={{paddingBottom: '5px'}}>Review</p>
-                            <div className="d-flex w-100 justify-content-end" style={{paddingBottom: '13px'}}>
-                                <Link className="nav-link" style={{color: 'white'}}>Username</Link> 
-                            </div>
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
