@@ -4,6 +4,7 @@ import About from './components/About';
 import BookDetail from './components/BookDetail';
 import BookList from './components/BookList';
 import Home from './components/Home';
+import UserProfile from './components/UserProfile';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<BookList />}/>
           <Route path="/book/:id" element={<BookDetail />} />
           <Route path='/about' element={<About />} />
+          <Route path="/profile/:id" element={ <UserProfile /> } />
           
         </Route>
 
