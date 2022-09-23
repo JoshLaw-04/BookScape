@@ -10,7 +10,7 @@ export const BooksProvider = (props) => {
     const baseURL = 'https://www.googleapis.com/books/v1/volumes/'
 
     function getBook(volumeID) {
-        return axios.get(baseUrl + volumeID).then(response => {
+        return axios.get(baseURL + volumeID).then(response => {
             return new Promise(resolve => resolve(response.data.items));
         })
         .catch(err=>console.log(err));
