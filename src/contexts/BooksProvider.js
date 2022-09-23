@@ -3,18 +3,16 @@ import BookContext from "./BookContext";
 
 export const BooksProvider = (props) => {
 
-    //Since the GoogleBooks API only allows us to search, we have to provide it a query (the q= part of the URL)
-    //in this case, I provided a static ISBN number
+    //Since the GoogleBooks API only allows us to search, we have to provide the volumeID
     //the only way for us to generate a "Book feed" with the most recently rated books
-    //is to make an API call for each book, changing the ISBN variable each time
+    //is to make an API call for each book, changing the volumeID variable each time
 
-    const isbn = 9780547951973;
+    const volumeID = '_LettPDhwR0C';
     const [bookData, setBookData] = useState([]);
-    const apiKey = "AIzaSyD-hKdXQ0ECoeMJNOeSz_w9-58GSzY1iPs"; //this is my key provided by Google
-    const baseURL = 'https://www.googleapis.com/books/v1/volumes?q='+isbn+'&key='+apiKey+'&maxResults=40'
+    const baseURL = 'https://www.googleapis.com/books/v1/volumes/'
 
     function getBooks() {
-        return axios.get(baseURL)
+        return axios.get(baseURL + volumeID)
         .then(res => setBookData(res.data.items))
         .catch(err=>console.log(err))
     };
