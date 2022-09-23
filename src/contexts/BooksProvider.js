@@ -11,7 +11,7 @@ export const BooksProvider = (props) => {
 
     function getBook(volumeID) {
         return axios.get(baseURL + volumeID).then(response => {
-            return new Promise(resolve => resolve(response.data.items));
+            return new Promise(resolve => resolve(response.data));
         })
         .catch(err=>console.log(err));
     };

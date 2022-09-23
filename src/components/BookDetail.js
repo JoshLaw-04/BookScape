@@ -15,7 +15,7 @@ function BookDetail() {
             .then((bookData) => setBookData(bookData))
         }
         fetchData();
-    }, [getBook, volumeID]);
+    }, []);
 
   return (
     <Container>
