@@ -7,20 +7,18 @@ export const BooksProvider = (props) => {
     //the only way for us to generate a "Book feed" with the most recently rated books
     //is to make an API call for each book, changing the volumeID variable each time
 
-    const volumeID = '_LettPDhwR0C';
-    const [bookData, setBookData] = useState([]);
     const baseURL = 'https://www.googleapis.com/books/v1/volumes/'
 
-    function getBooks() {
-        return axios.get(baseURL + volumeID)
-        .then(res => setBookData(res.data.items))
-        .catch(err=>console.log(err))
+    function getBook(volumeID) {
+        return axios.get(baseUrl + volumeID).then(response => {
+            return new Promise(resolve => resolve(response.data.items));
+        })
+        .catch(err=>console.log(err));
     };
 
     return (
         <BookContext.Provider value={{
-            bookData,
-            getBooks
+            getBook
         }}>
             {props.children}
         </BookContext.Provider>
