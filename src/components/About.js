@@ -38,14 +38,14 @@ function About() {
                 <Card style={{ width: '45em', margin: '15px' }} key={i}>
                     <Row>
                         <Col xs='3' sm='3' md='3' lg='4' xl='4'>
-                            <Card.Img variant="top" src={image} style={{padding: '5px'}}/>
+                            <Card.Img variant="top" src={image} style={{padding: '5px'}} width= '10px' height='200px'/>
                         </Col>
                         <Col xs='9' sm='9' md='9' lg='8' xl='8'>
                             <Card.Body>
                                 <Card.Title>{name}</Card.Title>
                                 <Card.Text>
-                                    {role}
-                                    {about}
+                                    {role} <br/>
+                                    <small>{about}</small>
                                 </Card.Text>
                             </Card.Body>
                         </Col>
@@ -57,12 +57,12 @@ function About() {
 
   return (
     <Container>
-        <Row style={{paddingTop: '15px'}}>
-            <Col xs='12' sm='12' md='6' lg='6' xl='5'>
+        <Row style={{paddingTop: '15px', textAlign: 'center'}}>
+            <Col xs='12' sm='12' md='6' lg='5' xl='12'>
                 <h2 style={{paddingBottom: '15px'}}>About Us</h2>
-                <p style={{paddingRight: '20px'}}>Our team is a talented, cross-generational, multi-ethnical group of leaders that strives for excellence in all arenas of life.  This unique combination of drive and determination makes our projects come alive individually and corporately.  This team also represents humility and the authentic learner spirit, which has contributed immensely to this project's collaborative nature and provides a shining example of working together.  Each team member exemplifies the highest moral and ethical standard that allows the individual to stand out in any circle.  We were handpicked for this project which led to the name Team Chosen.  Without any further ado, please meet the talented individuals that make up our team.</p>
+                <p style={{paddingRight: '20px'}}>Our team is a talented, cross-generational, multi-ethnical group of leaders that strives <br/> for excellence in all arenas of life. This unique combination of drive and determination <br/> makes our projects come alive individually and corporately. This team also represents <br/> humility and the authentic learner spirit, which has contributed immensely to this project's <br/> collaborative nature and provides a shining example of working together. Each team member <br/> exemplifies the highest moral and ethical standard that allows the individual to stand out in any <br/> circle. We were handpicked for this project which led to the name Team Chosen. Without any <br/> further ado, please meet the talented individuals that make up our team.</p>
             </Col>
-            <Col xs='12' sm='12' md='6' lg='6' xl='7'>
+            <Col xs='12' sm='12' md='6' lg='7' xl='12'>
                 <h2 style={{paddingBottom: '15px', paddingLeft: '15px'}}>Team Chosen</h2>
                 {displayTeam()}
             </Col>
