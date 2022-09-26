@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import bill from './assets/bill.jpg'
 import stephanie from './assets/stephanie.jpg'
+import josh from './assets/josh.jpg'
+import katie from './assets/katie.jpeg'
 
 function About() {
 
@@ -14,7 +16,8 @@ function About() {
         },
         {
             name: 'Katie Watson', 
-            role: 'Backend Developer'
+            role: 'Backend Developer',
+            image: katie
         },
         {
             name: 'Stephanie Delgado', 
@@ -24,7 +27,8 @@ function About() {
         },
         {
             name: 'Josh Law', 
-            role: 'Frontend Developer'
+            role: 'Frontend Developer',
+            image: josh
         },
         {
             name: 'Caleb Smith', 
