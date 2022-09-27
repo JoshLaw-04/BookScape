@@ -15,7 +15,7 @@ function BookDetail() {
             .then((bookData) => setBookData(bookData))
         }
         fetchData();
-    }, []);
+    }, [getBook, volumeID]);
 
   return (
     <Container>
@@ -30,7 +30,7 @@ function BookDetail() {
             <Col xs={8} md={6} lg={4} xl={3}>
             <img 
                 alt=""
-                // src={}
+                // src=
                 width="300"
                 height="350"
                 style={{ padding: "5px" }}
@@ -38,9 +38,9 @@ function BookDetail() {
             <p style={{paddingLeft: '5px', paddingTop: '5px'}}>ISBN</p>
             </Col>
             <Col xs={3} md={6} lg={4} xl={4}>
-                <h2>Book Title</h2>
+                <h2>title</h2>
                 <p>Book Author</p>
-                <p>Publishing Company</p>
+                <p>Publisher</p>
                 <p>Publishing Date</p>
             </Col>
             <Col xs={12} md={12} lg={4} xl={5}>
