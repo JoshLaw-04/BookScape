@@ -17,6 +17,7 @@ function About() {
         {
             name: 'Katie Watson', 
             role: 'Backend Developer',
+            about: 'As a board game aficionado and video game enthusiast, problem solving runs in her blood. This driving force is what has led her down several paths from healthcare to law to nonprofit work as she seeks to address the needs of the wider community. With her recent work in the nonprofit sector, a problem was identified and a passion awoke to help nonprofit organizations get their word and work on display to the world through technology.',
             image: katie
         },
         {
