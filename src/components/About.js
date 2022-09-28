@@ -1,9 +1,10 @@
 import React from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import bill from './assets/bill.jpg'
 import stephanie from './assets/stephanie.jpg'
 import josh from './assets/josh.jpg'
 import katie from './assets/katie.jpeg'
+import "./Home.css";
 
 
 function About() {
@@ -41,22 +42,17 @@ function About() {
     const displayTeam = () => {
         return team.map(({name, role, image, about}, i) => {
             return (
-                <Card style={{ width: '45em', margin: '15px' }} key={i}>
-                    <Row>
-                        <Col xs='3' sm='3' md='3' lg='4' xl='4'>
-                            <Card.Img variant="top" src={image} style={{padding: '5px'}} width= '10px' height='200px'/>
-                        </Col>
-                        <Col xs='9' sm='9' md='9' lg='8' xl='8'>
-                            <Card.Body>
-                                <Card.Title>{name}</Card.Title>
-                                <Card.Text>
-                                    {role} <br/>
-                                    <small>{about}</small>
-                                </Card.Text>
-                            </Card.Body>
-                        </Col>
-                    </Row>
-                </Card>
+                <Row key={i} style={{paddingBottom: '80px'}}>
+                    <Col xs='12' sm='12' md='5' lg='5' xl='6'>
+                        <img variant="top" src={image} style={{padding: '5px'}} width= '215px' height='200px'/>
+                        <h4>{name}</h4>
+                        
+                    </Col>
+                    <Col xs='12' sm='12' md='7' lg='7' xl='6'>
+                        <p style={{fontWeight: 'bold'}}>{role}</p>
+                        <p style={{textAlign: 'left'}}>{about}</p>
+                    </Col>
+                </Row>
             )
         })
     }
@@ -64,12 +60,12 @@ function About() {
   return (
     <Container>
         <Row style={{paddingTop: '15px', textAlign: 'center'}}>
-            <Col xs='12' sm='12' md='6' lg='5' xl='12'>
-                <h2 style={{paddingBottom: '15px'}}>About Us</h2>
-                <p style={{paddingRight: '20px'}}>Our team is a talented, cross-generational, multi-ethnical group of leaders that strives for excellence in all arenas of life. This unique combination of drive and determination makes our projects come alive individually and corporately. This team also represents humility and the authentic learner spirit, which has contributed immensely to this project's collaborative nature and provides a shining example of working together. Each team member exemplifies the highest moral and ethical standard that allows the individual to stand out in any circle. We were handpicked for this project which led to the name Team Chosen. Without any further ado, please meet the talented individuals that make up our team.</p>
+            <Col xs='12' sm='12' md='12' lg='12' xl='12' style={{paddingBottom: '50px', paddingTop: '15px'}}>
+                <h2 style={{paddingBottom: '20px'}}>About Us</h2>
+                <p style={{width:'650px', textAlign:'left'}} class="d-flex justify-content-center">Our team is a talented, cross-generational, multi-ethnical group of leaders that strives for excellence in all arenas of life. This unique combination of drive and determination makes our projects come alive individually and corporately. This team also represents humility and the authentic learner spirit, which has contributed immensely to this project's collaborative nature and provides a shining example of working together. Each team member exemplifies the highest moral and ethical standard that allows the individual to stand out in any circle. We were handpicked for this project which led to the name Team Chosen. Without any further ado, please meet the talented individuals that make up our team.</p>
             </Col>
-            <Col xs='12' sm='12' md='6' lg='7' xl='12'>
-                <h2 style={{paddingBottom: '15px', paddingLeft: '15px'}}>Team Chosen</h2>
+            <Col xs='12' sm='12' md='12' lg='12' xl='12'>
+                <h2 style={{paddingBottom: '20px', paddingLeft: '15px'}}>Team Chosen</h2>
                 {displayTeam()}
             </Col>
         </Row>
