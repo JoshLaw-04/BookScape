@@ -45,18 +45,13 @@ function Home() {
             </Link>
             <Form className="d-flex">
               <FormControl
-                //onSubmit={ handleSubmit }
                 ref={ inputElement }
                 type="text"
                 placeholder="Search"
                 className="me-2"
                 aria-label="search"
                 value={ search }
-                //onChange={ e => setSearch(e.target.value) }
                 onChange={ getSearchTerm }
-                //onChange={ (e) => searchHandler(e.target.value) }
-                //onSubmit={ (e) => e.preventDefault() }
-                //onKeyDown={searchHandler}
               />
               <Button onClick={bookSearchReturn}>Find</Button>
             </Form>
