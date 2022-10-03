@@ -10,13 +10,11 @@ function Home() {
 
   const inputElement = useRef('');
 
-  const { search, searchHandler, setSearch } = useContext(BookContext);
+  const { search, searchHandler, bookSearchReturn } = useContext(BookContext);
 
   function getSearchTerm() {
     searchHandler(inputElement.current.value);
   }
-
-  
 
   return (
     <>
@@ -60,7 +58,7 @@ function Home() {
                 //onSubmit={ (e) => e.preventDefault() }
                 //onKeyDown={searchHandler}
               />
-              {/* <Button onClick=>Find</Button> */}
+              <Button onClick={bookSearchReturn}>Find</Button>
             </Form>
           </Nav>
         </Container>

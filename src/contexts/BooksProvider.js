@@ -1,16 +1,16 @@
 import BookContext from "./BookContext";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const BooksProvider = (props) => {
 
-    //Since the GoogleBooks API only allows us to search, we have to provide the volumeID
-    //the only way for us to generate a "Book feed" with the most recently rated books
-    //is to make an API call for each book, changing the volumeID variable each time
     const [ book, setBook ] = useState([]);
     const [ search, setSearch ] = useState('');
     const [ searchResults, setSearchResults ] = useState([]);
-    const baseURL = 'https://www.googleapis.com/books/v1/volumes/'
+    const volumeURL = 'https://www.googleapis.com/books/v1/volumes/'
+    const searchURL = 'https://www.googleapis.com/books/v1/volumes?q='+search+'&key=AIzaSyDgI3uNznl3nuYZEutbvQBfi-HTTvAzIy0'+'&maxResults=40';
+    const navigate = useNavigate();
 
 
     //this is me trying a useEffect to prevent the page load
@@ -28,10 +28,6 @@ export const BooksProvider = (props) => {
         
         setSearch(search);
         console.log(search);
-        const newBook = Object.values(search).join(' ');
-        setSearchResults(newBook);
-        console.log(`newBook: ${newBook}`);
-           
             
         /* return axios.get(baseURL + newBook)
         .then(res => console.log(res.data.items))
@@ -45,8 +41,15 @@ export const BooksProvider = (props) => {
         console.log('handleSubmit')
     } */
 
+    function bookSearchReturn() {
+        axios.get(searchURL)
+        .then(res=>setSearchResults(res.data.items))
+        .catch(err=>console.log(err))
+        navigate('/booklist')
+    }
+
     function getBook(volumeID) {
-        return axios.get(baseURL + volumeID).then(response => {
+        return axios.get(volumeURL + volumeID).then(response => {
             return new Promise(resolve => resolve(response.data));
         })
         .catch(err=>console.log(err));
@@ -57,7 +60,9 @@ export const BooksProvider = (props) => {
             getBook,
             search,
             setSearch,
-            searchHandler
+            searchHandler,
+            searchResults,
+            bookSearchReturn
         }}>
             {props.children}
         </BookContext.Provider>
