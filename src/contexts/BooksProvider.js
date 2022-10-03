@@ -28,6 +28,9 @@ export const BooksProvider = (props) => {
         
         setSearch(search);
         console.log(search);
+        // const newBook = Object.values(search).join(' ');
+        // setSearchResults(newBook);
+        // console.log(`newBook: ${newBook}`);
             
         /* return axios.get(baseURL + newBook)
         .then(res => console.log(res.data.items))

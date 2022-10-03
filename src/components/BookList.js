@@ -4,6 +4,7 @@ import BookContext from "../contexts/BookContext";
 function BookList() {
 
   let { searchResults } = useContext(BookContext);
+  let [bookItem, setBookItem] = useState();
 
   return (
 
@@ -16,11 +17,11 @@ function BookList() {
                     {
                         return (
                             <>
-                            <div className="card">
+                            <div className="card" onClick={() =>{setBookItem(item)}}>
                                 <img src={thumbnail} alt="" />
                                 <div className="bottom">
                                     <h3 className="title">{item.volumeInfo.title}</h3>
-                                    <p className="amount">&#8377;{amount}</p>
+                                    <p className="amount">${amount}</p>
                                 </div>
                             </div>
                             </>
