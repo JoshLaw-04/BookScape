@@ -18,18 +18,25 @@ function BookList() {
                 <div id="CardsCol">
                         <Row>
                             {searchResults.map((book) => {
-                                let bookPic = book.volumeInfo.imageLinks.thumbnail
-                                return (
+                                let bookPic = book.volumeInfo.imageLinks
+                                if (bookPic !== undefined) {
+                                    return (
 
-                                    <Card id="CardBorder" style={{ width: '245px' }} key={book.id}>
-                                        <Card.Img variant="top" src={bookPic} />
-                                            <Card.Body>
-                                                <Card.Title>{book.volumeInfo.title}</Card.Title>
-                                                {book.volumeInfo.authors.map((author) => {
-                                                    return (<Card.Text key={author}>{author}</Card.Text>)})}
-                                            </Card.Body>
-                                    </Card>
-                                )
+                                        <Card id="CardBorder" style={{ width: '245px' }} key={book.id}>
+                                            <Card.Img variant="top" src={bookPic.thumbnail} />
+                                                <Card.Body>
+                                                    <Card.Title>{book.volumeInfo.title}</Card.Title>
+                                                    {book.volumeInfo.authors.map((author) => {
+                                                        if (book.volumeInfo.authors !== undefined){
+                                                            return (<Card.Text key={author}>{author}</Card.Text>)}
+                                                        }
+                                                    )}
+                                                </Card.Body>
+                                        </Card>
+                                        )
+                                } else {
+                                    <p>No books found 😣</p>
+                                }
                             })}
                         </Row>
                 </div>
