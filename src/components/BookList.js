@@ -21,12 +21,12 @@ function BookList() {
                                 let bookPic = book.volumeInfo.imageLinks.thumbnail
                                 return (
 
-                                    <Card id="CardBorder" style={{ width: '245px' }}>
+                                    <Card id="CardBorder" style={{ width: '245px' }} key={book.id}>
                                         <Card.Img variant="top" src={bookPic} />
                                             <Card.Body>
                                                 <Card.Title>{book.volumeInfo.title}</Card.Title>
-                                                {/* {book.authors.map((author) => {
-                                                    return (<Card.Text>{author}</Card.Text>)})} */}
+                                                {book.volumeInfo.authors.map((author) => {
+                                                    return (<Card.Text key={author}>{author}</Card.Text>)})}
                                             </Card.Body>
                                     </Card>
                                 )
