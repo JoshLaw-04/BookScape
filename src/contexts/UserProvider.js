@@ -83,10 +83,9 @@ export const UserProvider = (props) => {
 
     const baseUrl = "http://localhost:3000/api/users/";
 
-    function createUser(username, password) {       
-        let user = { username, password };
+    function createUser(newUser) {       
         
-        return axios.post(baseUrl, user)
+        return axios.post(baseUrl, newUser)
             .then(response => {
                 return new Promise(resolve => resolve(response.data));
             }
