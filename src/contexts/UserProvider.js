@@ -96,7 +96,7 @@ export const UserProvider = (props) => {
     function signInUser(username, password) {
         let user = { username, password };
     
-        return axios.post(`${baseUrl}/login`, user)
+        return axios.post(`${baseUrl}login`, user)
             .then(response => {
                 localStorage.setItem('myToken', response.data.token)
                 return new Promise(resolve => resolve(response.data));
