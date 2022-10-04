@@ -27,13 +27,11 @@ export const ReviewProvider = (props) => {
     }
 
     function addReview(review) {
-        // let myHeaders = {
-        //     Authorization: `Bearer ${localStorage.getItem('myPostToken')}` 
-        // };
+        let myHeaders = {
+            Authorization: `Bearer ${localStorage.getItem('myToken')}` 
+        };
 
-        // return axios.post(baseUrl, review, { headers: myHeaders })
-        
-        return axios.post(baseUrl, review)
+        return axios.post(baseUrl, review, { headers: myHeaders })
             .then(response => {
                 getAllReview();
                 return new Promise(resolve => resolve(response.data));
@@ -42,13 +40,11 @@ export const ReviewProvider = (props) => {
     }
 
     function editReview(review) {
-        // let myHeaders = {
-        //     Authorization: `Bearer ${localStorage.getItem('myPostToken')}`
-        // };
+        let myHeaders = {
+            Authorization: `Bearer ${localStorage.getItem('myToken')}`
+        };
 
-        // return axios.put(baseUrl + post.postId, post, { headers: myHeaders })
-
-        return axios.put(baseUrl + review.reviewId, review)
+        return axios.put(baseUrl + review.reviewId, review, { headers: myHeaders })
             .then(response => {
                 getAllReview();
                 return new Promise(resolve => resolve(response.data));
@@ -57,13 +53,11 @@ export const ReviewProvider = (props) => {
     }
 
     function deleteReview(id) {
-        // let myHeaders = {
-        //     Authorization: `Bearer ${localStorage.getItem('myPostToken')}` 
-        // };
+        let myHeaders = {
+            Authorization: `Bearer ${localStorage.getItem('myToken')}` 
+        };
 
-        // return axios.delete(baseUrl + id, { headers: myHeaders })
-
-        return axios.delete(baseUrl + id)
+        return axios.delete(baseUrl + id, { headers: myHeaders })
             .then(response => {
                 getAllReview();
                 return new Promise(resolve => resolve(response.data));
