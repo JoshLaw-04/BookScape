@@ -1,13 +1,22 @@
-import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import React, { useContext, useRef } from "react";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { Form, FormControl } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
 import { Link, Outlet } from "react-router-dom";
+import BookContext from "../contexts/BookContext";
 import "./Home.css";
 import logo from './assets/Bookscape.png'
 
 
 function Home() {
+
+  const inputElement = useRef('');
+
+  const { search, searchHandler, bookSearchReturn } = useContext(BookContext);
+
+  function getSearchTerm() {
+    searchHandler(inputElement.current.value);
+  }
 
   return (
     <>
@@ -38,12 +47,15 @@ function Home() {
             </Link>
             <Form className="d-flex">
               <FormControl
-                type="search"
+                ref={ inputElement }
+                type="text"
                 placeholder="Search"
                 className="me-2"
                 aria-label="search"
-                // onChange={filterSearch}
+                value={ search }
+                onChange={ getSearchTerm }
               />
+              <Button onClick={bookSearchReturn}>Find</Button>
             </Form>
           </Nav>
         </Container>
