@@ -1,48 +1,74 @@
 import React from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
+import bill from './assets/bill.jpg'
+import stephanie from './assets/stephanie.jpg'
+import josh from './assets/josh.jpg'
+import katie from './assets/katie.jpeg'
+import "./Home.css";
 
 
 function About() {
 
     const team = [
-        {name: 'Bill Franklin', role: 'Backend Developer'},
-        {name: 'Katie Watson', role: 'Backend Developer'},
-        {name: 'Stephanie Delgado', role: 'Frontend Developer'},
-        {name: 'Josh Law', role: 'Frontend Developer'},
-        {name: 'Caleb Smith', role: 'Frontend Developer'}
+        {
+            name: 'Bill Franklin', 
+            role: 'Full Stack Developer',
+            about: 'A fermented sausage and traditional cured meat enthusiast that loves to code, lead, learn, create, and problem solve.  His true heart is to see each and every person he meets achieve the best version of themselves and to see transformation and achievement of new heights professionally and personally.  He loves to encourage with words of affirmation and the challenge to understand each person’s unique situation.  The developing world has opened him up to new ways to create and challenge himself adding a dimension of satisfaction that has been non-existent in his life before now.',
+            image: bill
+        },
+        {
+            name: 'Katie Watson', 
+            role: 'Full Stack Developer',
+            about: 'As a board game aficionado and video game enthusiast, problem solving runs in her blood. This driving force is what has led her down several paths from healthcare to law to nonprofit work as she seeks to address the needs of the wider community. With her recent work in the nonprofit sector, a problem was identified and a passion awoke to help nonprofit organizations get their word and work on display to the world through technology.',
+            image: katie
+        },
+        {
+            name: 'Stephanie Delgado', 
+            role: 'Frontend Developer',
+            about: 'A problem solver with a love for research. Stephanie started learning to code in 2019, though it began as more of a hobby than a career focus. After a college education in Psychology and continuing to pursue that hobby by enlisting in a coding Bootcamp in 2021, Stephanie discovered another passion, her love for coding. Her ultimate goal is to utilize her knowledge and experience in behavioral health and her new software skills to continue serving underserved communities.', 
+            image: stephanie
+        },
+        {
+            name: 'Joshua Law', 
+            role: 'Frontend Developer',
+            image: josh,
+            about: 'From a young age I was involved in the tech industry. My parents own a website design company and through many fire place business chats my love for the industry bloomed. Within the month I had buried myself in coding content and decided to sign up for Bethel Tech’s full stack web design program. Other than my passion for coding and web design I love rock climbing, the great outdoors, boating and most of all body building.'
+        },
+        {
+            name: 'Caleb Smith', 
+            role: 'Frontend Developer'
+        }
     ]
 
     const displayTeam = () => {
-        return team.map(({name, role}, i) => {
+        return team.map(({name, role, image, about}, i) => {
             return (
-                <Card style={{ width: '25em', margin: '15px' }} key={i}>
-                    <Row>
-                        <Col xs='3' sm='3' md='3' lg='4' xl='4'>
-                            <Card.Img variant="top" src="holder.js/100px180" style={{padding: '5px'}}/>
-                        </Col>
-                        <Col xs='9' sm='9' md='9' lg='8' xl='8'>
-                            <Card.Body>
-                                <Card.Title>{name}</Card.Title>
-                                <Card.Text>
-                                    {role}
-                                </Card.Text>
-                            </Card.Body>
-                        </Col>
-                    </Row>
-                </Card>
+                <Row key={i} style={{paddingBottom: '80px'}}>
+                    <Col xs='12' sm='12' md='5' lg='5' xl='6'>
+                        <img variant="top" src={image} style={{padding: '5px'}} width= '215px' height='200px'/>
+                        <h4>{name}</h4>
+                        
+                    </Col>
+                    <Col xs='12' sm='12' md='7' lg='7' xl='6'>
+                        <p style={{fontWeight: 'bold'}}>{role}</p>
+                        <p style={{textAlign: 'left'}}>{about}</p>
+                    </Col>
+                </Row>
             )
         })
     }
 
   return (
     <Container>
-        <Row style={{paddingTop: '15px'}}>
-            <Col xs='12' sm='12' md='6' lg='6' xl='6'>
-                <h2 style={{paddingBottom: '15px'}}>About Us</h2>
-                <p style={{paddingRight: '20px'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget egestas purus viverra accumsan in nisl nisi. Morbi blandit cursus risus at ultrices mi tempus imperdiet. At risus viverra adipiscing at. Tincidunt dui ut ornare lectus sit amet est. Nunc mattis enim ut tellus elementum. Amet consectetur adipiscing elit pellentesque. Ut pharetra sit amet aliquam id diam maecenas ultricies mi. Velit sed ullamcorper morbi tincidunt ornare massa. Sodales ut etiam sit amet nisl. Commodo odio aenean sed adipiscing. Eu ultrices vitae auctor eu augue ut. Interdum posuere lorem ipsum dolor sit amet consectetur. Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor.</p>
+        <Row style={{paddingTop: '15px', textAlign: 'center'}}>
+            <Col xs='12' sm='12' md='12' lg='12' xl='12' style={{paddingBottom: '50px', paddingTop: '15px'}}>
+                <h1 style={{paddingBottom: '10px'}}>About Us</h1>
+                <div class="d-flex justify-content-center">
+                    <p style={{width:'650px', textAlign:'left'}}>Our team is a talented, cross-generational, multi-ethnical group of leaders that strives for excellence in all arenas of life. This unique combination of drive and determination makes our projects come alive individually and corporately. This team also represents humility and the authentic learner spirit, which has contributed immensely to this project's collaborative nature and provides a shining example of working together. Each team member exemplifies the highest moral and ethical standard that allows the individual to stand out in any circle. We were handpicked for this project which led to the name Team Chosen. Without any further ado, please meet the talented individuals that make up our team.</p>
+                </div> 
             </Col>
-            <Col xs='12' sm='12' md='6' lg='6' xl='6'>
-                <h2 style={{paddingBottom: '15px', paddingLeft: '15px'}}>Team Chosen</h2>
+            <Col xs='12' sm='12' md='12' lg='12' xl='12'>
+                <h1 style={{paddingBottom: '20px', paddingLeft: '15px'}}>Team Chosen</h1>
                 {displayTeam()}
             </Col>
         </Row>
@@ -56,3 +82,5 @@ function About() {
 
 
 export default About;
+
+

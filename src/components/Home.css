@@ -11,3 +11,18 @@
     left: 0; right: 0; bottom: 0;
     height: [footer-height];
 } */
+
+#CardsCol{
+    text-align: center;
+}
+#FormSignIn{
+    text-align: center;
+}
+#CardBorder{
+    border: solid 3px black;
+    border-radius: 7px;
+}
+
+#centerform{
+    text-align: center;
+}

@@ -5,6 +5,8 @@ import Stack from "react-bootstrap/Stack";
 import { Link, Outlet } from "react-router-dom";
 import BookContext from "../contexts/BookContext";
 import "./Home.css";
+import logo from './assets/Bookscape.png'
+
 
 function Home() {
 
@@ -22,9 +24,9 @@ function Home() {
         <Navbar.Brand className="logo">
           <img
             alt=""
-            // src={}
-            width="45"
-            height="45"
+            src={logo}
+            width="50"
+            height="50"
             style={{ padding: "5px" }}
           />{" "}
           Bookscape
