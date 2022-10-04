@@ -1,70 +1,74 @@
 import React, { useContext, useState } from 'react';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import { Container } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../contexts/UserContext';
 import "./Home.css";
-import axios from "axios";
 
-const SignUp =() => {
 
-const baseUrl = "http://localhost:3001/api/users/";
+const SignUp = () => {
+    let [ newUser, setNewUser] = useState({
+        username: null,
+        password: null,
+        firstName: null,
+        lastName: null,
+        email: null
+    })
 
-     function createUser(username, password, email, firstName, lastName) {       
-        let user = { username, password, email, firstName, lastName };
-        
-        return axios.post(baseUrl, user).then(response => {
-          console.log(response)
-            }
-        );
+    let { createUser } = useContext(UserContext);
+    let navigate = useNavigate();
+
+    function handleChange(event) {
+        setNewUser((prevValue) => {
+            return { ...prevValue, [event.target.name]: event.target.value }
+        });
     }
 
     function handleSubmit(event) {
-      event.preventDefault();
-      createUser(username,password,firstName,lastName, email).then(() => {
-      }).catch(error => {
-          console.log(error);
-          window.alert('Failed registration: error creating user');
-      });
-  }
+        event.preventDefault();
+        createUser(newUser).then(() => {
+            navigate('/login');
+        }).catch(error => {
+            console.log(error);
+            console.log(newUser);
+            window.alert('Failed registration: error creating user');
+        });
+    }
 
- 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [email, setEmail] = useState("");
- 
- 
-  return (
-    <>
-      <div>
-        <form id="FormSignIn" onSubmit={handleSubmit}>
-          <label>Email :
-            <input placeholder="Enter Email" type="Email" name="Email" onChange={e => setEmail(e.target.value)} />
-          </label>
-          <br></br><br></br>
-          <label>Username :
-            <input placeholder="Enter Username" type="text" name="username" value={username} onChange={e => setUsername(e.target.value)} />
-          </label>
-          <br></br><br></br>
-          <label>Password :
-            <input placeholder="Enter Password" type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
-          </label>
-          <br></br><br></br>
-          <label>First Name :
-            <input placeholder="Enter First Name" type="firstName" name="firstName" onChange={e => setfirstName(e.target.value)} />
-          </label>
-          <br></br><br></br>
-          <label>Last Name :
-            <input placeholder="Enter Last Name" type="lastName" name="lastName" onChange={e => setlastName(e.target.value)} />
-          </label>
-          <br></br><br></br>
-          <input type="submit" value="Sign In" />
-        </form>
-      </div>
-    </>
-  )
-}
+    return (
+        <Container>
+        <br/>
+        <h1>REGISTER</h1>
+        <br></br>
+        <Form id='signUpForm' onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" >
+                <Form.Label>Username:</Form.Label>
+                <Form.Control type="text" name="username" value={newUser.username} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group className="mb-3" >
+                <Form.Label>Password:</Form.Label>
+                <Form.Control type="password" name="password" value={newUser.password} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group className="mb-3" >
+                <Form.Label>First Name:</Form.Label>
+                <Form.Control type="string" name="firstName" value={newUser.firstName} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group className="mb-3" >
+                <Form.Label>Last Name:</Form.Label>
+                <Form.Control type="text" name="lastName" value={newUser.lastName} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group className="mb-3" >
+                <Form.Label>Email:</Form.Label>
+                <Form.Control type="text" name="email" value={newUser.email} onChange={handleChange} />
+            </Form.Group>
+          <Button type="submit" id="saveBtn">Sign Up</Button>
+        </Form>
+        <br/>
+        </Container>
+    )
+};
 
- 
 export default SignUp;
  
  
