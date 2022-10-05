@@ -21,7 +21,8 @@ function BookList() {
                         <Row>
                             {searchResults.map((book) => {
                                 let bookPic = book.volumeInfo.imageLinks
-                                if (bookPic !== undefined) {
+                                let authors = book.volumeInfo.authors
+                                if (bookPic !== undefined && authors !== undefined) {
                                     return (
 
                                         <Card id="CardBorder" style={{ width: '245px' }} key={book.id}>
@@ -30,12 +31,9 @@ function BookList() {
                                                     <Card.Title>{book.volumeInfo.title}</Card.Title>
 
                                                     {/* the below maps the authors which is returned as an array */}
-                                                    {book.volumeInfo.authors.map((author) => {
-                                                        if (book.volumeInfo.authors !== undefined){
-                                                            return (<Card.Text key={author}>{author}</Card.Text>)}
-                                                        }
-                                                    )}
-
+                                                    {authors.map((author) =>
+                                                        {return (<Card.Text key={author}>{author}</Card.Text>)})
+                                                    }
                                                 <Link to={`/book/${book.id}`} onClick={() => setBook(book)}>Book Details</Link>
                                                 </Card.Body>
                                         </Card>

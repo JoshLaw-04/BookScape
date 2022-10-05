@@ -5,20 +5,11 @@ import BookContext from '../contexts/BookContext';
 
 function BookDetail() {
 
-    // let {id} = useParams();
-
-
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         await getBook(volumeID)
-    //         .then((bookData) => setBookData(bookData))
-    //     }
-    //     fetchData();
-    // }, [getBook, volumeID]);
+    let { book } = useContext(BookContext);
 
   return (
     <Container>
-        
+            {console.log(book)}
         <div style={{paddingTop: '15px'}}>
             <h2>Book Detail</h2><br/>
         </div>
