@@ -4,7 +4,7 @@ import "./Home.css";
 import BookContext from "../contexts/BookContext";
 import { useNavigate, Link } from "react-router-dom";
 
-function BookList() {
+/* function BookList() {
 
     let { setBook } = useContext(BookContext);
     let navigate = useNavigate();
@@ -82,6 +82,7 @@ function BookList() {
 
 
 
+}
 
 }
 
