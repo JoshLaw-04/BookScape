@@ -2,12 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
+import { FaStar } from 'react-icons/fa';
 
 function BookDetail() {
 
     let { getBook } = useContext(BookContext);
     const volumeID = '_LettPDhwR0C';
     const [bookData, setBookData] = useState([]);
+    const [ rating, setRating ] = useState(null);
+    const [ hover, setHover ] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
@@ -68,7 +71,28 @@ function BookDetail() {
                         <Row style={{paddingBottom: '10px'}}>
                             <Col>
                                 <div className="d-flex w-100 justify-content-start">
-                                    <small>Star Rating</small> 
+                                    <small>Star Rating</small>
+                                    {[...Array(5)].map((star, i) => {
+                                        const ratingValue = i + 1;
+                                        return (
+                                            <label>
+                                                <input
+                                                    className='starRadio'
+                                                    type="radio"
+                                                    name="rating"
+                                                    value={ ratingValue }
+                                                    onClick={ () => setRating(ratingValue) }
+                                                />
+                                                <FaStar
+                                                    className='star'
+                                                    color={ ratingValue <= (hover || rating) ? '#ffc107' : '#A9A9A9' }
+                                                    size={25}
+                                                    onMouseEnter={ () => setHover(ratingValue) }
+                                                    onMouseLeave={ () => setHover(null) }
+                                                />
+                                            </label>
+                                        );
+                                    })}
                                 </div>
                             </Col>
                             <Col>

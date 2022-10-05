@@ -3,7 +3,7 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 import "./Home.css";
 import BookContext from "../contexts/BookContext";
 
-function BookList() {
+/* function BookList() {
 
   let { searchResults } = useContext(BookContext);
   let [bookItem, setBookItem] = useState();
@@ -39,7 +39,6 @@ function BookList() {
   )
 
 }
-
 
 
 

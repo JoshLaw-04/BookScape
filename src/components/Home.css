@@ -26,3 +26,16 @@
 #centerform{
     text-align: center;
 }
+
+input [type="radio"] {
+    display: none;
+}
+
+.starRadio {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
+    transition: color 200ms;
+}
