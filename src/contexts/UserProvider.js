@@ -108,7 +108,7 @@ export const UserProvider = (props) => {
                     Authorization: `Bearer ${localStorage.getItem('myToken')}` 
                 };
                 
-                return axios.get(`${baseUrl}profile/` + id, { headers: myHeaders })
+                return axios.get(baseUrl + id, { headers: myHeaders })
                     .then(response => {
                         return new Promise((resolve) => resolve(response.data));
                     }
