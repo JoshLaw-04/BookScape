@@ -2,10 +2,12 @@ import { useContext, useState } from "react";
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import "./Home.css";
 import BookContext from "../contexts/BookContext";
+import { useNavigate, Link } from "react-router-dom";
 
 function BookList() {
 
-  let [bookItem, setBookItem] = useState();
+    let { setBook } = useContext(BookContext);
+    let navigate = useNavigate();
 
   return (
     <BookContext.Consumer>
@@ -26,11 +28,15 @@ function BookList() {
                                             <Card.Img variant="top" src={bookPic.thumbnail} />
                                                 <Card.Body>
                                                     <Card.Title>{book.volumeInfo.title}</Card.Title>
+
+                                                    {/* the below maps the authors which is returned as an array */}
                                                     {book.volumeInfo.authors.map((author) => {
                                                         if (book.volumeInfo.authors !== undefined){
                                                             return (<Card.Text key={author}>{author}</Card.Text>)}
                                                         }
                                                     )}
+
+                                                <Link to={`/book/${book.id}`} onClick={() => setBook(book)}>Book Details</Link>
                                                 </Card.Body>
                                         </Card>
                                         )

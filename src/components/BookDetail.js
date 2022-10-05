@@ -1,26 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 
 function BookDetail() {
 
-    let { getBook } = useContext(BookContext);
-    const volumeID = '_LettPDhwR0C';
-    const [bookData, setBookData] = useState([]);
+    // let {id} = useParams();
 
-    useEffect(() => {
-        async function fetchData() {
-            await getBook(volumeID)
-            .then((bookData) => setBookData(bookData))
-        }
-        fetchData();
-    }, [getBook, volumeID]);
+
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         await getBook(volumeID)
+    //         .then((bookData) => setBookData(bookData))
+    //     }
+    //     fetchData();
+    // }, [getBook, volumeID]);
 
   return (
     <Container>
-
-        {console.log(bookData)}
         
         <div style={{paddingTop: '15px'}}>
             <h2>Book Detail</h2><br/>

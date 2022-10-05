@@ -11,6 +11,8 @@ export const BooksProvider = (props) => {
     const searchURL = 'https://www.googleapis.com/books/v1/volumes?q='+search+'&key=AIzaSyDgI3uNznl3nuYZEutbvQBfi-HTTvAzIy0'+'&maxResults=40';
     const navigate = useNavigate();
 
+    let [book, setBook] = useState(null);
+
     function searchHandler(search) {
         setSearch(search);
         console.log(search);
@@ -43,7 +45,9 @@ export const BooksProvider = (props) => {
             search,
             searchHandler,
             searchResults,
-            bookSearchReturn
+            bookSearchReturn,
+            book,
+            setBook
         }}>
             {props.children}
         </BookContext.Provider>
