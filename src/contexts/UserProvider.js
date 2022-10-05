@@ -103,10 +103,23 @@ export const UserProvider = (props) => {
         );
     }
 
+    function getUserProfile(id) {
+                let myHeaders = {
+                    Authorization: `Bearer ${localStorage.getItem('myToken')}` 
+                };
+                
+                return axios.get(baseUrl + id, { headers: myHeaders })
+                    .then(response => {
+                        return new Promise((resolve) => resolve(response.data));
+                    }
+                );
+            }
+
     return (
         <UserContext.Provider value={{
             createUser,
-            signInUser
+            signInUser,
+            getUserProfile
         }}>
             { props.children }
         </UserContext.Provider>
