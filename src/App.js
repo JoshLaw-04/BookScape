@@ -10,7 +10,7 @@ import UserProfile from './components/UserProfile';
 import { UserProvider } from './contexts/UserProvider';
 import { BooksProvider } from './contexts/BooksProvider';
 import { ReviewProvider } from './contexts/ReviewsProvider';
-// import EditReview from './components/EditReview';
+import EditReview from './components/EditReview';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
               <Route path="/register" element={ <SignUp /> } />
               <Route path="/login" element={ <SignIn /> } />
               <Route path="/book/:id" element={<BookDetail />} />
-              {/* <Route path="/edit/:id" element={ <EditReview /> } /> */}
+              <Route path="/edit/:id" element={ <EditReview /> } />
               <Route path='/about' element={<About />} />
               <Route path="/profile/:id" element={ <UserProfile /> } />
             </Route>

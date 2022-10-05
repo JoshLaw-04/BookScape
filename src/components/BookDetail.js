@@ -25,7 +25,7 @@ function BookDetail() {
             <h2>Book Detail</h2><br/>
         </div>
         <Row>
-            <Col xs={8} md={6} lg={4} xl={3}>
+            <Col xs={12} md={6} lg={4} xl={3} style={{paddingBottom: '25px'}}>
             <img 
                 alt=""
                 src={bookPic}
@@ -34,7 +34,7 @@ function BookDetail() {
                 style={{ padding: "5px" }}
             />{" "}
             </Col>
-            <Col xs={3} md={6} lg={4} xl={4}>
+            <Col xs={12} md={6} lg={4} xl={4} style={{paddingBottom: '25px'}}>
                 <h2>{title}</h2>
                 {authors.map((author) => <p>{author}</p>)}
                 {pubCo && <p>{pubCo}</p>}
