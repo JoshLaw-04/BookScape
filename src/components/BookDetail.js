@@ -7,32 +7,37 @@ function BookDetail() {
 
     let { book } = useContext(BookContext);
 
+    const title = book.volumeInfo.title
+    const authors = book.volumeInfo.authors
+    const description = book.volumeInfo.description
+    const bookPic = book.volumeInfo.imageLinks.thumbnail
+    const pubCo = book.volumeInfo.publisher
+    const pubDate = book.volumeInfo.publishedDate
+
   return (
     <Container>
             {console.log(book)}
         <div style={{paddingTop: '15px'}}>
             <h2>Book Detail</h2><br/>
         </div>
-        
         <Row>
             <Col xs={8} md={6} lg={4} xl={3}>
             <img 
                 alt=""
-                // src=
+                src={bookPic}
                 width="300"
                 height="350"
                 style={{ padding: "5px" }}
             />{" "}
-            <p style={{paddingLeft: '5px', paddingTop: '5px'}}>ISBN</p>
             </Col>
             <Col xs={3} md={6} lg={4} xl={4}>
-                <h2>title</h2>
-                <p>Book Author</p>
-                <p>Publisher</p>
-                <p>Publishing Date</p>
+                <h2>{title}</h2>
+                {authors.map((author) => <p>{author}</p>)}
+                {pubCo && <p>{pubCo}</p>}
+                {pubDate && <p>{pubDate}</p>}
             </Col>
             <Col xs={12} md={12} lg={4} xl={5}>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                {description && <p>{description}</p>}
             </Col>
         </Row>
         <Row style={{paddingTop: '25px', paddingBottom: '5px'}}>
