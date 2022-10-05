@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Col, Container, ListGroup, Row } from 'react-bootstrap';
+import { Button, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ReviewContext from '../contexts/ReviewsContext';
 import UserContext from '../contexts/UserContext';
@@ -10,8 +10,9 @@ function UserProfile() {
     let {id} = useParams();
     let navigate = useNavigate();
 
-    let { getUserProfile, users } = useContext(UserContext);
-    let { reviews } = useContext(ReviewContext);
+    let { getUserProfile } = useContext(UserContext);
+    let { reviews, deleteReview } = useContext(ReviewContext);
+    let [refresh, setRefresh] = useState(0);
     
     let [getUser, setGetUser] = useState("")
 
@@ -30,7 +31,7 @@ function UserProfile() {
 
     // function handleDelete(id) {
     //     deleteReview(id).then(() => {
-    //         navigate('/');
+    //         navigate(`/profile/${id}`)
     //     }).catch(error => {
     //         console.log(error);
     //         navigate('/login');
@@ -58,9 +59,9 @@ function UserProfile() {
                     <>
                         {getUser.userId === r.userId && 
                         <>
-                        <Row key={r.reviewId}>
+                        <Row>
                             <Col xs={12} md={12} lg={12} xl={12}>
-                                <ListGroup className="align-self-start w-80" >
+                                <ListGroup className="align-self-start w-80" key={r.reviewId}>
                                     <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#98ffed' }}>
                                         <Row>
                                             <Col xs={3} sm={3} md={2} lg={1} xl={1}>
@@ -83,8 +84,8 @@ function UserProfile() {
                                             </Col>
                                             <Col xs={4} sm={4} md={2} lg={2} xl={2}>
                                                 <div className="d-flex w-100 justify-content-end">
-                                                    {users && users.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>}{' '}
-                                                    {/* {users && users.userId === r.userId && <Button style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Button>}{' '}    */}
+                                                    {/* <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '} */}
+                                                    {/* <Button style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Button>{' '}    */}
                                                 </div>
 
                                             </Col>  
@@ -103,47 +104,8 @@ function UserProfile() {
                     </>
                 )
             })}
-            {/* <Row>
-                <Col xs={12} md={12} lg={12} xl={12}>
-                    <ListGroup className="align-self-start w-80">
-                        <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#98ffed' }}>
-                            <Row>
-                                <Col xs={3} sm={3} md={2} lg={1} xl={1}>
-                                    <img 
-                                        alt=""
-                                        // src={}
-                                        width="100"
-                                        height="115"
-                                        style={{ padding: "5px" }}
-                                    />{" "}
-                                </Col>
-                                <Col xs={5} sm={5} md={8} lg={9} xl={9}>
-                                    <div className="d-flex w-100 justify-content-start" style={{paddingBottom: '13px'}}>
-                                        <Link className='ml-auto me-2'>Book Title</Link>
-                                        <small>Star Rating</small> 
-                                    </div>
-                                    <div>
-                                        <p className="mb-1" style={{paddingBottom: '5px'}}>Review</p>
-                                    </div>
-                                </Col>
-                                <Col xs={4} sm={4} md={2} lg={2} xl={2}>
-                                    <div className="d-flex w-100 justify-content-end">
-                                        <Link className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '}
-                                        <Link style={{color: '#000807'}}>Delete</Link>{' '}   
-                                    </div>
 
-                                </Col>  
-                            </Row>
-                            <Row>
-                                <Col className="d-flex w-100 justify-content-end" style={{paddingBottom: '5px'}}>    
-                                    <Link className="nav-link" style={{color: 'white'}}>Username</Link> 
-                                </Col>
-                            </Row>
-                        </ListGroup.Item>
-                    </ListGroup>
-                </Col>
-            </Row> */}
-        </Container>
+        </Container>   
     )
   
 }
