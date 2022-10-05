@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
-import ReviewContext from "./ReviewContext";
+import ReviewContext from "./ReviewsContext";
 
 export const ReviewProvider = (props) => {
 
@@ -27,11 +27,11 @@ export const ReviewProvider = (props) => {
     }
 
     function addReview(review) {
-        let myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('myToken')}` 
-        };
+        // let myHeaders = {
+        //     Authorization: `Bearer ${localStorage.getItem('myToken')}` 
+        // };
 
-        return axios.post(baseUrl, review, { headers: myHeaders })
+        return axios.post(baseUrl, review)
             .then(response => {
                 getAllReview();
                 return new Promise(resolve => resolve(response.data));
@@ -40,11 +40,11 @@ export const ReviewProvider = (props) => {
     }
 
     function editReview(review) {
-        let myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('myToken')}`
-        };
+        // let myHeaders = {
+        //     Authorization: `Bearer ${localStorage.getItem('myToken')}`
+        // };
 
-        return axios.put(baseUrl + review.reviewId, review, { headers: myHeaders })
+        return axios.put(baseUrl + review.reviewId, review)
             .then(response => {
                 getAllReview();
                 return new Promise(resolve => resolve(response.data));
@@ -53,11 +53,11 @@ export const ReviewProvider = (props) => {
     }
 
     function deleteReview(id) {
-        let myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('myToken')}` 
-        };
+        // let myHeaders = {
+        //     Authorization: `Bearer ${localStorage.getItem('myToken')}` 
+        // };
 
-        return axios.delete(baseUrl + id, { headers: myHeaders })
+        return axios.delete(baseUrl + id)
             .then(response => {
                 getAllReview();
                 return new Promise(resolve => resolve(response.data));

@@ -9,11 +9,14 @@ import SignUp from './components/SignUp';
 import UserProfile from './components/UserProfile';
 import { UserProvider } from './contexts/UserProvider';
 import { BooksProvider } from './contexts/BooksProvider';
+import { ReviewProvider } from './contexts/ReviewsProvider';
 
 function App() {
   return (
     <BrowserRouter>
+      
       <UserProvider>
+      <ReviewProvider>
       <BooksProvider>
         
           <Routes>
@@ -28,6 +31,7 @@ function App() {
           </Routes>
 
       </BooksProvider>
+      </ReviewProvider>
       </UserProvider>
     </BrowserRouter>
   );
