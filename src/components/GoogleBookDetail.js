@@ -3,13 +3,21 @@ import { Container, Row, Col, Button, ListGroup, Form } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import { FaStar } from 'react-icons/fa';
+import ReviewContext from '../contexts/ReviewsContext';
 
-function BookDetail() {
-
+function GoogleBookDetail() {
 
     let { book, getLocalBook, setLocalBook} = useContext(BookContext);
+    let { addReview } = useContext(ReviewContext);
     const [ rating, setRating ] = useState(null);
     const [ hover, setHover ] = useState(null);
+
+    const [ review, setReview] = useState({
+        userId: 1,
+        bookId: 1,
+        starRating: rating,
+        comment: ""
+    });
 
     const title = book.volumeInfo.title
     const authors = book.volumeInfo.authors
@@ -18,9 +26,19 @@ function BookDetail() {
     const pubCo = book.volumeInfo.publisher
     const pubDate = book.volumeInfo.publishedDate
 
+    function handleReviewCommentChange(event) {
+        setReview((prevValue) => {
+            return { ...prevValue, [event.target.name]: event.target.value }
+        });
+    }
+
     function handleBookSubmit (event) {
         event.preventDefault();
         setLocalBook(book);
+    }
+
+    function handleReviewSubmit() {
+        console.log(review);
     }
 
   return (
@@ -56,7 +74,7 @@ function BookDetail() {
         <Row>
             <Col xs={12} md={12} lg={12} xl={12}>
                 <form onSubmit={handleBookSubmit}>
-                    <textarea placeholder="Write a Review" type="text" rows={4} cols={40} />
+                    <textarea placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={review.comment} onChange={handleReviewCommentChange}/>
                     <br/>
                     {' '}<button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '5px'}}>Submit</button>
                 </form>
@@ -115,4 +133,4 @@ function BookDetail() {
 }
 
 
-export default BookDetail;
+export default GoogleBookDetail;
