@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, Button, ListGroup, Form } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import { FaStar } from 'react-icons/fa';
@@ -7,7 +7,7 @@ import { FaStar } from 'react-icons/fa';
 function BookDetail() {
 
 
-    let { book } = useContext(BookContext);
+    let { book, getLocalBook, setLocalBook} = useContext(BookContext);
     const [ rating, setRating ] = useState(null);
     const [ hover, setHover ] = useState(null);
 
@@ -18,9 +18,13 @@ function BookDetail() {
     const pubCo = book.volumeInfo.publisher
     const pubDate = book.volumeInfo.publishedDate
 
+    function handleBookSubmit (event) {
+        event.preventDefault();
+        setLocalBook(book);
+    }
+
   return (
     <Container>
-            {console.log(book)}
         <div style={{paddingTop: '15px'}}>
             <h2>Book Detail</h2><br/>
         </div>
@@ -36,7 +40,7 @@ function BookDetail() {
             </Col>
             <Col xs={3} md={6} lg={4} xl={4}>
                 <h2>{title}</h2>
-                {authors.map((author) => <p>{author}</p>)}
+                {authors.map((author) => <p key={author}>{author}</p>)}
                 {pubCo && <p>{pubCo}</p>}
                 {pubDate && <p>{pubDate}</p>}
             </Col>
@@ -51,10 +55,10 @@ function BookDetail() {
         </Row>
         <Row>
             <Col xs={12} md={12} lg={12} xl={12}>
-                <form>
+                <form onSubmit={handleBookSubmit}>
                     <textarea placeholder="Write a Review" type="text" rows={4} cols={40} />
                     <br/>
-                    {' '}<Button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '5px'}}>Submit</Button>
+                    {' '}<button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '5px'}}>Submit</button>
                 </form>
             </Col>
         </Row>
@@ -69,7 +73,7 @@ function BookDetail() {
                                     {[...Array(5)].map((star, i) => {
                                         const ratingValue = i + 1;
                                         return (
-                                            <label>
+                                            <label key={ratingValue}>
                                                 <input
                                                     className='starRadio'
                                                     type="radio"

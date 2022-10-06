@@ -7,8 +7,9 @@ export const BooksProvider = (props) => {
 
     const [ search, setSearch ] = useState('');
     const [ searchResults, setSearchResults ] = useState([]);
-    const volumeURL = 'https://www.googleapis.com/books/v1/volumes/'
-    const searchURL = 'https://www.googleapis.com/books/v1/volumes?q='+search+'&key=AIzaSyDgI3uNznl3nuYZEutbvQBfi-HTTvAzIy0'+'&maxResults=40';
+    const googleVolumeURL = 'https://www.googleapis.com/books/v1/volumes/'
+    const googleSearchURL = 'https://www.googleapis.com/books/v1/volumes?q='+search+'&key=AIzaSyDgI3uNznl3nuYZEutbvQBfi-HTTvAzIy0'+'&maxResults=40';
+    const localBookURL = 'http://localhost:3000/api/books/';
     const navigate = useNavigate();
 
     let [book, setBook] = useState(null);
@@ -16,32 +17,39 @@ export const BooksProvider = (props) => {
     function searchHandler(search) {
         setSearch(search);
         console.log(search);
-        // const newBook = Object.values(search).join(' ');
-        // setSearchResults(newBook);
-        // console.log(`newBook: ${newBook}`);
-            
-        /* return axios.get(baseURL + newBook)
-        .then(res => console.log(res.data.items))
-        .catch(error => console.log(error) */
     }
     
     function bookSearchReturn() {
-        axios.get(searchURL)
+        axios.get(googleSearchURL)
         .then(res=>setSearchResults(res.data.items))
         .catch(err=>console.log(err))
         navigate('/booklist')
     }
 
-    function getBook(volumeID) {
-        return axios.get(volumeURL + volumeID).then(response => {
+    function getLocalBook(bookId) {
+        return axios.get(localBookURL + bookId).then(response => {
             return new Promise(resolve => resolve(response.data));
         })
         .catch(err=>console.log(err));
     };
 
+    function setLocalBook(book) {
+        // let myHeaders = {
+        //     Authorization: `Bearer ${localStorage.getItem('myToken')}`
+        // };
+
+        //ADD HEADERS INTO POST REQUEST for final run thru **************
+        return axios.post(localBookURL, book)
+            .then(response => {
+                return new Promise(resolve => resolve(response.data));
+            }
+        );
+    }
+
     return (
         <BookContext.Provider value={{
-            getBook,
+            getLocalBook,
+            setLocalBook,
             search,
             searchHandler,
             searchResults,
