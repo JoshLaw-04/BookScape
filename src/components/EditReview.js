@@ -8,12 +8,10 @@ function EditReview() {
     let {id} = useParams();
     let navigate = useNavigate();
     let {editReview, getReview } = useContext(ReviewContext);
-    // let {users} = UserContext(UserContext);
 
     let [editThisReview, setEditThisReview] = useState({
         comment: "",
         starRating: ""
-        // user: users.userId
     })
 
     useEffect(() => {
@@ -51,6 +49,9 @@ function EditReview() {
                 <>
                 <div>
                     <form onSubmit={handleSubmit} style={{paddingLeft: '50px', paddingTop: '50px'}}>
+                        <span style={{fontWeight: 'bold'}}>Star Rating:</span><br/>
+                        <input type="text" name="starRating" value={editThisReview.starRating} onChange={handleChange} /><br/><br/>
+                        <span style={{fontWeight: 'bold'}}>Review:</span><br/>
                         <textarea type="text" name="comment" rows={3} cols={50} value={editThisReview.comment} onChange={handleChange} />
                         <br></br><br></br>
                         <Button type='submit' style={{marginBottom: '5px', backgroundColor: 'black'}}>Update</Button>

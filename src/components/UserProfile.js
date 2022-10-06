@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Col, Container, ListGroup, Row } from 'react-bootstrap';
+import { Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ReviewContext from '../contexts/ReviewsContext';
 import UserContext from '../contexts/UserContext';
+
 
 
 function UserProfile() {
@@ -14,6 +15,7 @@ function UserProfile() {
     let { deleteReview } = useContext(ReviewContext);
     
     let [getUser, setGetUser] = useState("")
+    
 
     useEffect(() => {
         async function fetch() {

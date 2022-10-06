@@ -18,6 +18,8 @@ function BookDetail() {
     const pubCo = book.volumeInfo.publisher
     const pubDate = book.volumeInfo.publishedDate
 
+
+
   return (
     <Container>
             {console.log(book)}
@@ -65,7 +67,6 @@ function BookDetail() {
                         <Row style={{paddingBottom: '10px'}}>
                             <Col>
                                 <div className="d-flex w-100 justify-content-start">
-                                    <small>Star Rating</small>
                                     {[...Array(5)].map((star, i) => {
                                         const ratingValue = i + 1;
                                         return (
