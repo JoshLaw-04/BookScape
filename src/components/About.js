@@ -60,7 +60,7 @@ function About() {
 
   return (
     <Container>
-        <Row style={{paddingTop: '15px', textAlign: 'center'}}>
+        <Row style={{paddingTop: '25px', textAlign: 'center'}}>
             <Col xs='12' sm='12' md='12' lg='12' xl='12' style={{paddingBottom: '50px', paddingTop: '15px'}}>
                 <h1 style={{paddingBottom: '10px'}}>About Us</h1>
                 <div class="d-flex justify-content-center">

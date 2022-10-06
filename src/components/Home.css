@@ -19,7 +19,7 @@
     text-align: center;
 }
 #CardBorder{
-    border: solid 3px black;
+    border: solid 1px black;
     border-radius: 7px;
 }
 
@@ -39,3 +39,4 @@ input [type="radio"] {
     cursor: pointer;
     transition: color 200ms;
 }
+

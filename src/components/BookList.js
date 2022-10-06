@@ -15,7 +15,7 @@ function BookList() {
             
             return (
                 <Container>
-                <h1>Book Results</h1>
+                <h1 style={{paddingTop: '25px', paddingLeft: '7px', paddingBottom: '10px'}}>Book Results</h1>
                 <div id="CardsCol">
                         <Row>
                             {searchResults.map((book) => {
@@ -24,8 +24,8 @@ function BookList() {
                                 if (bookPic !== undefined && authors !== undefined) {
                                     return (
 
-                                        <Card id="CardBorder" style={{ width: '245px' }} key={book.id}>
-                                            <Card.Img variant="top" src={bookPic.thumbnail} />
+                                        <Card id="CardBorder" style={{width: '18rem', padding: '15px', margin: '20px', textAlign: 'left', paddingBottom: '2px' }} key={book.id}>
+                                            <Card.Img variant="top" src={bookPic.thumbnail} className="card-img-top" height='350'/>
                                                 <Card.Body>
                                                     <Card.Title>{book.volumeInfo.title}</Card.Title>
 
@@ -34,7 +34,7 @@ function BookList() {
                                                         {return (<Card.Text key={author}>{author}</Card.Text>)})
                                                     }
                                                     
-                                                <Link to={`/book/${book.id}`} onClick={() => setBook(book)}>Book Details</Link>
+                                                <Link to={`/book/${book.id}`} onClick={() => setBook(book)}>Book Detail</Link>
                                                 </Card.Body>
                                         </Card>
                                         )

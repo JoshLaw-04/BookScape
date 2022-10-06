@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../contexts/UserContext';
 import "./Home.css";
@@ -26,41 +26,33 @@ const SignIn = () => {
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
-        <h1 style={{paddingTop: '30px', paddingBottom: '15px'}}>LOGIN</h1>
-        <span style={{paddingRight: '10px'}}>Username  </span>
-        <input placeholder="Enter username" type="text" name="username" onChange={e => setUsername(e.target.value)} />
-        <br></br><br></br>
-        <span style={{paddingRight: '14px'}}>Password  </span>
-        <input placeholder="Enter password" type="password" name="password" onChange={e => setPassword(e.target.value)} />
-        <br /><br></br>
-        <Button type='submit' style={{backgroundColor: '#000807', color: '#A2A3BB', marginBottom: '5px', marginTop: '15px'}}>
-            Sign In
-        </Button>
-    </form>
-    <div style={{paddingBottom:'392px'}}>
-
-    </div>
+    
+    <Container>
+      <div class="d-flex justify-content-center" style={{paddingTop: '75px'}}>
+        <Row>
+          <Col xs='12' sm='12' md='12' lg='12' xl='12' style={{paddingBottom: '20px'}}>
+            <h1 style={{textAlign: 'left'}}>LOGIN</h1>
+          </Col>
+          <Col xs='12' sm='12' md='12' lg='12' xl='12'>
+            <Form id='signUpForm' onSubmit={handleSubmit} style={{width: '325px'}}>
+                  <Form.Group className="mb-3" >
+                      <Form.Label>Username:</Form.Label>
+                      <Form.Control placeholder="Enter Username" type="text" name="username" onChange={e => setUsername(e.target.value)} />
+                  </Form.Group>
+                  <Form.Group className="mb-3" >
+                      <Form.Label>Password:</Form.Label>
+                      <Form.Control placeholder='Enter Password' type="password" name="password" onChange={e => setPassword(e.target.value)} />
+                  </Form.Group>  
+                <Button type="submit" id="saveBtn">Login</Button>
+              </Form>
+          </Col>
+        </Row>
+      </div>  
+    </Container>
+   
     </>
-);
-
-  // return (
-  //   <>
-  //     <div id="FormSignIn" onSubmit={handleSubmit}>
-  //       <form>
-  //         <label>Username :
-  //           <input placeholder="Enter username" type="text" name="username" onChange={e => setUsername(e.target.value)} />
-  //         </label>
-  //         <br></br><br></br>
-  //         <label>Password :
-  //           <input placeholder="Enter password" type="text" name="password" onChange={e => setPassword(e.target.value)} />
-  //         </label>
-  //         <br></br><br></br>
-  //           <input type="submit" value="Sign In" />
-  //       </form>
-  //     </div>
-  //   </>
-  // );
+  );
+  
 }
 
 export default SignIn;

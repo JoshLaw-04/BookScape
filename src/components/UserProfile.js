@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Col, Container, ListGroup, Row } from 'react-bootstrap';
+import { Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ReviewContext from '../contexts/ReviewsContext';
 import UserContext from '../contexts/UserContext';
+
 
 
 function UserProfile() {
@@ -11,10 +12,10 @@ function UserProfile() {
     let navigate = useNavigate();
 
     let { getUserProfile } = useContext(UserContext);
-    let { reviews, deleteReview } = useContext(ReviewContext);
-    let [refresh, setRefresh] = useState(0);
+    let { deleteReview } = useContext(ReviewContext);
     
     let [getUser, setGetUser] = useState("")
+    
 
     useEffect(() => {
         async function fetch() {
@@ -29,20 +30,23 @@ function UserProfile() {
           fetch()
     },  [])
 
-    // function handleDelete(id) {
-    //     deleteReview(id).then(() => {
-    //         navigate(`/profile/${id}`)
-    //     }).catch(error => {
-    //         console.log(error);
-    //         navigate('/login');
-    //     });
-    // }
-
+    function handleDelete(id) {
+        deleteReview(id).then(() => {
+            navigate(`/profile/${id}`)
+        }).catch(error => {
+            console.log(error);
+            navigate('/login');
+        });
+    }
 
 
     return (
-        <Container>
-            <Row style={{paddingTop: '15px'}}>
+        <ReviewContext.Consumer>
+            {
+                ({reviews}) => {
+                    return <>
+                    <Container>
+            <Row style={{paddingTop: '25px'}}>
                 <Col xs={3} md={6} lg={4} xl={4}>
                     <h1>{getUser.username}</h1>
                     <p style={{paddingLeft: '5px'}}>{getUser.firstName}{' '}{getUser.lastName}</p>
@@ -84,8 +88,8 @@ function UserProfile() {
                                             </Col>
                                             <Col xs={4} sm={4} md={2} lg={2} xl={2}>
                                                 <div className="d-flex w-100 justify-content-end">
-                                                    {/* <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '} */}
-                                                    {/* <Button style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Button>{' '}    */}
+                                                    <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '}
+                                                    <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>{' '}   
                                                 </div>
 
                                             </Col>  
@@ -105,7 +109,12 @@ function UserProfile() {
                 )
             })}
 
-        </Container>   
+        </Container> 
+
+                    </>
+                }
+            }
+        </ReviewContext.Consumer>  
     )
   
 }
