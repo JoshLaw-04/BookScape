@@ -5,7 +5,7 @@ import BookContext from '../contexts/BookContext';
 import { FaStar } from 'react-icons/fa';
 import ReviewContext from '../contexts/ReviewsContext';
 
-function GoogleBookDetail() {
+function BookDetail() {
 
     //imports from BookProvider
     let { book, setLocalBook } = useContext(BookContext);
@@ -41,7 +41,8 @@ function GoogleBookDetail() {
 
     async function handleSubmit (event) {
         event.preventDefault()
-        await setLocalBook(book) && setReview((prevValue) => {
+        await setLocalBook(book)
+        setReview((prevValue) => {
             return {...prevValue, bookId: localStorage.getItem('localBookId')}})
         console.log(review)
     }
@@ -138,4 +139,4 @@ function GoogleBookDetail() {
 }
 
 
-export default GoogleBookDetail;
+export default BookDetail;
