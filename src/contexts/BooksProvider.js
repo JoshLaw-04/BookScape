@@ -7,6 +7,7 @@ export const BooksProvider = (props) => {
 
     const [ search, setSearch ] = useState('');
     const [ searchResults, setSearchResults ] = useState([]);
+
     const googleVolumeURL = 'https://www.googleapis.com/books/v1/volumes/'
     const googleSearchURL = 'https://www.googleapis.com/books/v1/volumes?q='+search+'&key=AIzaSyDgI3uNznl3nuYZEutbvQBfi-HTTvAzIy0'+'&maxResults=40';
     const localBookURL = 'http://localhost:3000/api/books/';
@@ -41,6 +42,7 @@ export const BooksProvider = (props) => {
         //ADD HEADERS INTO POST REQUEST for final run thru **************
         return axios.post(localBookURL, book)
             .then(response => {
+                localStorage.setItem('localBookId', response.data.bookId)
                 return new Promise(resolve => resolve(response.data));
             }
         );

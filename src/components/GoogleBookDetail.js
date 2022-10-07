@@ -1,24 +1,30 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Container, Row, Col, Button, ListGroup, Form } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import { FaStar } from 'react-icons/fa';
 import ReviewContext from '../contexts/ReviewsContext';
 
 function GoogleBookDetail() {
 
-    let { book, getLocalBook, setLocalBook} = useContext(BookContext);
+    //imports from BookProvider
+    let { book, setLocalBook } = useContext(BookContext);
+
+    //imports from ReviewProvider
     let { addReview } = useContext(ReviewContext);
+
+    //Star stuff
     const [ rating, setRating ] = useState(null);
     const [ hover, setHover ] = useState(null);
 
     const [ review, setReview] = useState({
         userId: 1,
-        bookId: 1,
-        starRating: rating,
+        bookId: null,
+        starRating: 5,
         comment: ""
     });
 
+    //data from the book via GoogleAPI
     const title = book.volumeInfo.title
     const authors = book.volumeInfo.authors
     const description = book.volumeInfo.description
@@ -26,19 +32,18 @@ function GoogleBookDetail() {
     const pubCo = book.volumeInfo.publisher
     const pubDate = book.volumeInfo.publishedDate
 
+
     function handleReviewCommentChange(event) {
         setReview((prevValue) => {
             return { ...prevValue, [event.target.name]: event.target.value }
         });
     }
 
-    function handleBookSubmit (event) {
-        event.preventDefault();
-        setLocalBook(book);
-    }
-
-    function handleReviewSubmit() {
-        console.log(review);
+    async function handleSubmit (event) {
+        event.preventDefault()
+        await setLocalBook(book) && setReview((prevValue) => {
+            return {...prevValue, bookId: localStorage.getItem('localBookId')}})
+        console.log(review)
     }
 
   return (
@@ -73,7 +78,7 @@ function GoogleBookDetail() {
         </Row>
         <Row>
             <Col xs={12} md={12} lg={12} xl={12}>
-                <form onSubmit={handleBookSubmit}>
+                <form onSubmit={handleSubmit}>
                     <textarea placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={review.comment} onChange={handleReviewCommentChange}/>
                     <br/>
                     {' '}<button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '5px'}}>Submit</button>
