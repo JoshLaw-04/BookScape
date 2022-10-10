@@ -17,6 +17,7 @@ function BookDetail() {
     const [ rating, setRating ] = useState(null);
     const [ hover, setHover ] = useState(null);
 
+    //Review data
     const [ review, setReview] = useState({
         userId: 1,
         bookId: null,
@@ -24,7 +25,7 @@ function BookDetail() {
         comment: ""
     });
 
-    //data from the book via GoogleAPI
+    //data for the book via GoogleAPI
     const title = book.volumeInfo.title
     const authors = book.volumeInfo.authors
     const description = book.volumeInfo.description
@@ -42,9 +43,11 @@ function BookDetail() {
     async function handleSubmit (event) {
         event.preventDefault()
         await setLocalBook(book)
-        setReview((prevValue) => {
-            return {...prevValue, bookId: localStorage.getItem('localBookId')}})
-        console.log(review)
+        .then(
+            setReview((prevValue) => {
+                return {...prevValue, bookId: localStorage.getItem('localBookId')}}),
+            addReview(review)
+        )
     }
 
   return (
