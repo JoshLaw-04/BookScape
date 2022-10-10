@@ -37,6 +37,10 @@
 //         );
 //     }
 
+function signOutUser() {
+        return localStorage.clear();
+    }
+
 //     function getUserProfile(id) {
 //         let myHeaders = {
 //             Authorization: `Bearer ${localStorage.getItem('myToken')}` 
@@ -119,6 +123,7 @@ export const UserProvider = (props) => {
         <UserContext.Provider value={{
             createUser,
             signInUser,
+            signOutUser,
             getUserProfile
         }}>
             { props.children }
