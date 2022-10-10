@@ -37,10 +37,6 @@
 //         );
 //     }
 
-function signOutUser() {
-        return localStorage.clear();
-    }
-
 //     function getUserProfile(id) {
 //         let myHeaders = {
 //             Authorization: `Bearer ${localStorage.getItem('myToken')}` 
@@ -105,6 +101,10 @@ export const UserProvider = (props) => {
                 return new Promise(resolve => resolve(response.data));
             }
         );
+    }
+        
+        function signOutUser() {
+        return localStorage.clear();
     }
 
     function getUserProfile(id) {
