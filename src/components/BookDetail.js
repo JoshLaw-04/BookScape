@@ -40,14 +40,11 @@ function BookDetail() {
         });
     }
 
-    async function handleSubmit (event) {
+    function handleSubmit (event) {
         event.preventDefault()
-        await setLocalBook(book)
-        .then(
-            setReview((prevValue) => {
-                return {...prevValue, bookId: localStorage.getItem('localBookId')}}),
-            addReview(review)
-        )
+        setLocalBook(book).then( bookResponse => {
+            addReview({...review, bookId: bookResponse.data.bookId})
+        })
     }
 
   return (

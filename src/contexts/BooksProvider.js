@@ -35,17 +35,12 @@ export const BooksProvider = (props) => {
     };
 
     function setLocalBook(book) {
-        // let myHeaders = {
-        //     Authorization: `Bearer ${localStorage.getItem('myToken')}`
-        // };
+        let myHeaders = {
+            Authorization: `Bearer ${localStorage.getItem('myToken')}`
+        };
 
         //ADD HEADERS INTO POST REQUEST for final run thru **************
-        return axios.post(localBookURL, book)
-            .then(response => {
-                localStorage.setItem('localBookId', response.data.bookId)
-                return new Promise(resolve => resolve(response.data));
-            }
-        );
+        return axios.post(localBookURL, book, { headers: myHeaders })
     }
 
     return (

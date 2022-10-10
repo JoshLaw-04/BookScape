@@ -27,6 +27,7 @@ export const ReviewProvider = (props) => {
     }
 
     function addReview(review) {
+        console.log('adding review');
         let myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myToken')}` 
         };
