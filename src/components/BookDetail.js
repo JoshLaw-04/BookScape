@@ -1,16 +1,31 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
+import { Container, Row, Col, Button, ListGroup, Form } from 'react-bootstrap';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import { FaStar } from 'react-icons/fa';
+import ReviewContext from '../contexts/ReviewsContext';
 
 function BookDetail() {
 
+    //imports from BookProvider
+    let { book, setLocalBook } = useContext(BookContext);
 
-    let { book } = useContext(BookContext);
+    //imports from ReviewProvider
+    let { addReview } = useContext(ReviewContext);
+
+    //Star stuff
     const [ rating, setRating ] = useState(null);
     const [ hover, setHover ] = useState(null);
 
+    //Review data
+    const [ review, setReview] = useState({
+        userId: 1,
+        bookId: null,
+        starRating: 5,
+        comment: ""
+    });
+
+    //data for the book via GoogleAPI
     const title = book.volumeInfo.title
     const authors = book.volumeInfo.authors
     const description = book.volumeInfo.description
@@ -19,10 +34,22 @@ function BookDetail() {
     const pubDate = book.volumeInfo.publishedDate
 
 
+    function handleReviewCommentChange(event) {
+        setReview((prevValue) => {
+            return { ...prevValue, [event.target.name]: event.target.value }
+        });
+    }
+
+    function handleSubmit (event) {
+        event.preventDefault()
+        setLocalBook(book).then( bookResponse => {
+            addReview({...review, bookId: bookResponse.data.bookId})
+        })
+    }
+
 
   return (
     <Container>
-            {console.log(book)}
         <div style={{paddingTop: '15px'}}>
             <h2>Book Detail</h2><br/>
         </div>
@@ -38,7 +65,7 @@ function BookDetail() {
             </Col>
             <Col xs={12} md={6} lg={4} xl={4} style={{paddingBottom: '25px'}}>
                 <h2>{title}</h2>
-                {authors.map((author) => <p>{author}</p>)}
+                {authors.map((author) => <p key={author}>{author}</p>)}
                 {pubCo && <p>{pubCo}</p>}
                 {pubDate && <p>{pubDate}</p>}
             </Col>
@@ -53,10 +80,10 @@ function BookDetail() {
         </Row>
         <Row>
             <Col xs={12} md={12} lg={12} xl={12}>
-                <form>
-                    <textarea placeholder="Write a Review" type="text" rows={4} cols={40} />
+                <form onSubmit={handleSubmit}>
+                    <textarea placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={review.comment} onChange={handleReviewCommentChange}/>
                     <br/>
-                    {' '}<Button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '5px'}}>Submit</Button>
+                    {' '}<button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '5px'}}>Submit</button>
                 </form>
             </Col>
         </Row>
@@ -70,7 +97,7 @@ function BookDetail() {
                                     {[...Array(5)].map((star, i) => {
                                         const ratingValue = i + 1;
                                         return (
-                                            <label>
+                                            <label key={ratingValue}>
                                                 <input
                                                     className='starRadio'
                                                     type="radio"

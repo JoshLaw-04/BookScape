@@ -34,7 +34,10 @@ function BookList() {
                                                         {return (<Card.Text key={author}>{author}</Card.Text>)})
                                                     }
                                                     
-                                                <Link to={`/book/${book.id}`} onClick={() => setBook(book)}>Book Detail</Link>
+
+                                                <Link to={'/book/detail'} onClick={() => setBook(book)}>Book Details</Link>
+
+                                                {/*<Link to={`/book/${book.id}`} onClick={() => setBook(book)}>Book Detail</Link> */}
                                                 </Card.Body>
                                         </Card>
                                         )
