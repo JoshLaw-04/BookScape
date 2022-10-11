@@ -33,10 +33,6 @@ function About() {
             role: 'Frontend Developer',
             image: josh,
             about: 'From a young age I was involved in the tech industry. My parents own a website design company and through many fire place business chats my love for the industry bloomed. Within the month I had buried myself in coding content and decided to sign up for Bethel Tech’s full stack web design program. Other than my passion for coding and web design I love rock climbing, the great outdoors, boating and most of all body building.'
-        },
-        {
-            name: 'Caleb Smith', 
-            role: 'Frontend Developer'
         }
     ]
 

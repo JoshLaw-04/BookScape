@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import ReviewContext from "../contexts/ReviewsContext";
+import UserContext from "../contexts/UserContext";
 
 function EditReview() {
 
@@ -11,7 +12,8 @@ function EditReview() {
 
     let [editThisReview, setEditThisReview] = useState({
         comment: "",
-        starRating: ""
+        starRating: "",
+        userId: getReview.userId
     })
 
     useEffect(() => {
@@ -31,7 +33,7 @@ function EditReview() {
     function handleSubmit(event) {
         event.preventDefault();
         editReview(editThisReview).then(() => {
-            navigate(`/profile/${id}`)
+            navigate(`/profile/${editThisReview.userId}`)
             alert('Update was successful!');
         }).catch(error => {
             console.log(error);
