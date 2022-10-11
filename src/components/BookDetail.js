@@ -21,7 +21,7 @@ function BookDetail() {
     const [ review, setReview] = useState({
         userId: 1,
         bookId: null,
-        starRating: 5,
+        starRating: rating,
         comment: ""
     });
 
@@ -110,7 +110,7 @@ function BookDetail() {
                                                     color={ ratingValue <= (hover || rating) ? '#ffc107' : '#A9A9A9' }
                                                     size={25}
                                                     onMouseEnter={ () => setHover(ratingValue) }
-                                                    onMouseLeave={ () => setHover(null) }
+                                                    onMouseLeave={ () => setReview({...review, starRating: ratingValue}) }
                                                 />
                                             </label>
                                         );
