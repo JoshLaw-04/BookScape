@@ -1,6 +1,6 @@
 import BookContext from "./BookContext";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const BooksProvider = (props) => {
@@ -14,6 +14,19 @@ export const BooksProvider = (props) => {
     const navigate = useNavigate();
 
     let [book, setBook] = useState(null);
+
+    const [ localBooks, setLocalBooks ] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            await getAllLocalBooks();
+        }
+        fetchData();
+    }, []);
+
+    function getAllLocalBooks() {
+        return axios.get(localBookURL).then(response => setLocalBooks(response.data));
+    }
 
     function searchHandler(search) {
         setSearch(search);
@@ -45,6 +58,7 @@ export const BooksProvider = (props) => {
 
     return (
         <BookContext.Provider value={{
+            localBooks,
             getLocalBook,
             setLocalBook,
             search,
@@ -52,7 +66,7 @@ export const BooksProvider = (props) => {
             searchResults,
             bookSearchReturn,
             book,
-            setBook
+            setBook,
         }}>
             {props.children}
         </BookContext.Provider>

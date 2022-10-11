@@ -11,6 +11,7 @@ import { UserProvider } from './contexts/UserProvider';
 import { BooksProvider } from './contexts/BooksProvider';
 import { ReviewProvider } from './contexts/ReviewsProvider';
 import EditReview from './components/EditReview';
+import FeaturedBooks from './components/FeaturedBooks';
 
 function App() {
   return (
@@ -22,11 +23,12 @@ function App() {
         
           <Routes>
             <Route path="/" element={<Home />}>
+              <Route index element={ <FeaturedBooks /> } />
               <Route path='/booklist' element={<BookList />}/>
               <Route path="/register" element={ <SignUp /> } />
               <Route path="/login" element={ <SignIn /> } />
               <Route path="/book/detail" element={<BookDetail />} />
-              {/* <Route path="/edit/:id" element={ <EditReview /> } /> */}
+              <Route path="/edit/:id" element={ <EditReview /> } />
               <Route path='/about' element={<About />} />
               <Route path="/profile/:id" element={ <UserProfile /> } />
             </Route>
