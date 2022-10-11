@@ -6,6 +6,7 @@ import { Link, Outlet } from "react-router-dom";
 import BookContext from "../contexts/BookContext";
 import "./Home.css";
 import logo from './assets/Bookscape.png'
+import Footer from "./Footer";
 
 
 function Home() {
@@ -64,11 +65,7 @@ function Home() {
       <Stack>
         <Outlet />
       </Stack>
-      {/* <footer className="footer">
-        <div className="footer-copyright text-center py-3">
-          © 2022 Bookscape • Website Design by Team Chosen
-        </div>
-      </footer> */}
+      <Footer />
     </>
   );
 }

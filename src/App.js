@@ -10,7 +10,7 @@ import UserProfile from './components/UserProfile';
 import { UserProvider } from './contexts/UserProvider';
 import { BooksProvider } from './contexts/BooksProvider';
 import { ReviewProvider } from './contexts/ReviewsProvider';
-// import EditReview from './components/EditReview';
+import EditReview from './components/EditReview';
 
 function App() {
   return (

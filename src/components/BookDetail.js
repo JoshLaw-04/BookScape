@@ -47,13 +47,14 @@ function BookDetail() {
         })
     }
 
+
   return (
     <Container>
         <div style={{paddingTop: '15px'}}>
             <h2>Book Detail</h2><br/>
         </div>
         <Row>
-            <Col xs={8} md={6} lg={4} xl={3}>
+            <Col xs={12} md={6} lg={4} xl={3} style={{paddingBottom: '25px'}}>
             <img 
                 alt=""
                 src={bookPic}
@@ -62,7 +63,7 @@ function BookDetail() {
                 style={{ padding: "5px" }}
             />{" "}
             </Col>
-            <Col xs={3} md={6} lg={4} xl={4}>
+            <Col xs={12} md={6} lg={4} xl={4} style={{paddingBottom: '25px'}}>
                 <h2>{title}</h2>
                 {authors.map((author) => <p key={author}>{author}</p>)}
                 {pubCo && <p>{pubCo}</p>}
@@ -93,7 +94,6 @@ function BookDetail() {
                         <Row style={{paddingBottom: '10px'}}>
                             <Col>
                                 <div className="d-flex w-100 justify-content-start">
-                                    <small>Star Rating</small>
                                     {[...Array(5)].map((star, i) => {
                                         const ratingValue = i + 1;
                                         return (

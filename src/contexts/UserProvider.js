@@ -102,6 +102,10 @@ export const UserProvider = (props) => {
             }
         );
     }
+        
+        function signOutUser() {
+        return localStorage.clear();
+    }
 
     function getUserProfile(id) {
                 let myHeaders = {
@@ -119,6 +123,7 @@ export const UserProvider = (props) => {
         <UserContext.Provider value={{
             createUser,
             signInUser,
+            signOutUser,
             getUserProfile
         }}>
             { props.children }

@@ -1,16 +1,10 @@
 .Navbar {
-    background-color: #98ffed;
+    background-color: #98ffed;    
 }
 
 .nav-link{
     color: black !important;
 }
-
-/* .footer {
-    position:sticky;
-    left: 0; right: 0; bottom: 0;
-    height: [footer-height];
-} */
 
 #CardsCol{
     text-align: center;
@@ -19,7 +13,7 @@
     text-align: center;
 }
 #CardBorder{
-    border: solid 3px black;
+    border: solid 1px black;
     border-radius: 7px;
 }
 
@@ -38,4 +32,23 @@ input [type="radio"] {
 .star {
     cursor: pointer;
     transition: color 200ms;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 100%;
+    width: 100%;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    padding: 00.25em;
+    background-color: #98ffed;
+    display: grid;
+    place-content: center;
+    position: fixed;
+    margin-top: auto;
 }
