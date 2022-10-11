@@ -21,7 +21,14 @@ function BookList() {
                             {searchResults.map((book) => {
                                 let bookPic = book.volumeInfo.imageLinks
                                 let authors = book.volumeInfo.authors
-                                if (bookPic !== undefined && authors !== undefined) {
+                                let title = book.volumeInfo.title
+                                let description = book.volumeInfo.description
+                                
+                                if (bookPic !== undefined 
+                                    && authors !== undefined 
+                                    && description !== undefined
+                                    && title !== undefined) {
+                                    
                                     return (
 
                                         <Card id="CardBorder" style={{width: '18rem', padding: '15px', margin: '20px', textAlign: 'left', paddingBottom: '2px' }} key={book.id}>
