@@ -5,7 +5,7 @@ import BookContext from '../contexts/BookContext';
 import { FaStar } from 'react-icons/fa';
 import ReviewContext from '../contexts/ReviewsContext';
 
-function BookDetail() {
+function GoogleBookDetail() {
 
     //imports from BookProvider
     let { book, setLocalBook } = useContext(BookContext);
@@ -76,6 +76,29 @@ function BookDetail() {
         <Row style={{paddingTop: '25px', paddingBottom: '5px'}}>
             <Col>
                 <h3> Reviews </h3>
+                <div className="d-flex w-100 justify-content-start">
+                    {[...Array(5)].map((star, i) => {
+                        const ratingValue = i + 1;
+                        return (
+                            <label key={ratingValue}>
+                                <input
+                                    className='starRadio'
+                                    type="radio"
+                                    name="rating"
+                                    value={ ratingValue }
+                                    onClick={ () => setRating(ratingValue) }
+                                />
+                                <FaStar
+                                    className='star'
+                                    color={ ratingValue <= (hover || rating) ? '#ffc107' : '#A9A9A9' }
+                                    size={25}
+                                    onMouseEnter={ () => setHover(ratingValue) }
+                                    onMouseLeave={ () => setReview({...review, starRating: ratingValue}) }
+                                />
+                            </label>
+                        );
+                    })}
+                </div>
             </Col>
         </Row>
         <Row>
@@ -87,56 +110,10 @@ function BookDetail() {
                 </form>
             </Col>
         </Row>
-        <Row>
-            <Col xs={12} md={12} lg={12} xl={12}>
-                <ListGroup className="align-self-start w-80">
-                    <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#98ffed' }}>
-                        <Row style={{paddingBottom: '10px'}}>
-                            <Col>
-                                <div className="d-flex w-100 justify-content-start">
-                                    {[...Array(5)].map((star, i) => {
-                                        const ratingValue = i + 1;
-                                        return (
-                                            <label key={ratingValue}>
-                                                <input
-                                                    className='starRadio'
-                                                    type="radio"
-                                                    name="rating"
-                                                    value={ ratingValue }
-                                                    onClick={ () => setRating(ratingValue) }
-                                                />
-                                                <FaStar
-                                                    className='star'
-                                                    color={ ratingValue <= (hover || rating) ? '#ffc107' : '#A9A9A9' }
-                                                    size={25}
-                                                    onMouseEnter={ () => setHover(ratingValue) }
-                                                    onMouseLeave={ () => setReview({...review, starRating: ratingValue}) }
-                                                />
-                                            </label>
-                                        );
-                                    })}
-                                </div>
-                            </Col>
-                            <Col>
-                                <div className="d-flex w-100 justify-content-end">
-                                    <Link className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '}
-                                    <Link style={{color: '#000807'}}>Delete</Link>{' '}   
-                                </div>
-
-                            </Col>
-                        </Row>
-                        <p className="mb-1" style={{paddingBottom: '5px'}}>Review</p>
-                        <div className="d-flex w-100 justify-content-end" style={{paddingBottom: '13px'}}>
-                            <Link className="nav-link" style={{color: 'white'}}>Username</Link> 
-                        </div>
-                    </ListGroup.Item>
-                </ListGroup>
-            </Col>
-        </Row>
     </Container>
   )
   
 }
 
 
-export default BookDetail;
+export default GoogleBookDetail;
