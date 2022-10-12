@@ -3,6 +3,7 @@ import { Container, Row, Col, Button, ListGroup, Form } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import ReviewContext from '../contexts/ReviewsContext';
+import UserContext from '../contexts/UserContext';
 
 
 const LocalBookDetail = () =>  {
@@ -11,9 +12,10 @@ const LocalBookDetail = () =>  {
     let navigate = useNavigate();
 
     let { getLocalBook } = useContext(BookContext);
-    // let { deleteReview } = useContext(ReviewContext);
+    let { deleteReview } = useContext(ReviewContext);
     
     let [getBook, setGetBook] = useState("")
+    // const [ refresh, setRefresh ] = useState(0);
 
     useEffect(() => {
         async function fetch() {
@@ -27,6 +29,16 @@ const LocalBookDetail = () =>  {
           }
           fetch()
     },  [])
+
+
+    function handleDelete(id) {
+        deleteReview(id).then(() => {
+            navigate(`/book/${id}`)
+        }).catch(error => {
+            console.log(error);
+            navigate('/login');
+        });
+    }
 
     
 
@@ -69,7 +81,7 @@ const LocalBookDetail = () =>  {
                         <Row>
                             <Col xs={12} md={12} lg={12} xl={12}>
                                 <form>
-                                    <textarea placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" />
+                                    <textarea placeholder="Write a Review" type="text" rows={4} cols={40} name="comment"/>
                                     <br/>
                                     {' '}<button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '5px'}}>Submit</button>
                                 </form>
@@ -92,8 +104,8 @@ const LocalBookDetail = () =>  {
                                                         </Col>
                                                         <Col>
                                                             <div className="d-flex w-100 justify-content-end">
-                                                                <Link className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '}
-                                                                <Link style={{color: '#000807'}}>Delete</Link>{' '}   
+                                                                <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '}
+                                                                <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>{' '}   
                                                             </div>
 
                                                         </Col>
