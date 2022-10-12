@@ -104,9 +104,9 @@ function GoogleBookDetail() {
         <Row>
             <Col xs={12} md={12} lg={12} xl={12}>
                 <form onSubmit={handleSubmit}>
-                    <textarea placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={review.comment} onChange={handleReviewCommentChange}/>
+                    <textarea style={{marginTop: '5px'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={review.comment} onChange={handleReviewCommentChange}/>
                     <br/>
-                    {' '}<button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '5px'}}>Submit</button>
+                    <button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '15px', marginTop: '5px', marginBottom: '15px'}}>Submit</button>
                 </form>
             </Col>
         </Row>

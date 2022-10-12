@@ -1,25 +1,36 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Container, Row, Col, Button, ListGroup, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, ListGroup, Form, Image } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import ReviewContext from '../contexts/ReviewsContext';
-import UserContext from '../contexts/UserContext';
+import { FaStar } from 'react-icons/fa';
 
 
 const LocalBookDetail = () =>  {
 
-    let {id} = useParams();
+    // let {id} = useParams();
+    let params = useParams();
     let navigate = useNavigate();
 
     let { getLocalBook } = useContext(BookContext);
-    let { deleteReview } = useContext(ReviewContext);
+    let { deleteReview, addReview } = useContext(ReviewContext);
     
     let [getBook, setGetBook] = useState("")
-    // const [ refresh, setRefresh ] = useState(0);
+
+    const [ rating, setRating ] = useState(null);
+    const [ hover, setHover ] = useState(null);
+
+    
+    let [newReview, setNewReview] = useState({
+        comment: "",
+        starRating: rating,
+        userId: params.userId,
+        bookId: params.bookId
+    });
 
     useEffect(() => {
         async function fetch() {
-          await getLocalBook(id)
+          await getLocalBook(params.id)
             .then((getBook) => {
                 setGetBook(getBook)
             }).catch(error => {
@@ -31,6 +42,23 @@ const LocalBookDetail = () =>  {
     },  [])
 
 
+    function handleChange(event) {
+        setNewReview((prevValue) => {
+          return {...prevValue, [event.target.name]: event.target.value}
+        })
+    }
+    
+    function handleSubmit(event) {
+        event.preventDefault();
+        addReview(newReview).then(() => {
+          navigate('/');
+        }).catch(error => {
+          console.log(error);
+          navigate('/login');
+        });
+    }
+
+
     function handleDelete(id) {
         deleteReview(id).then(() => {
             navigate(`/book/${id}`)
@@ -40,7 +68,6 @@ const LocalBookDetail = () =>  {
         });
     }
 
-    
 
 
     return (
@@ -76,14 +103,37 @@ const LocalBookDetail = () =>  {
                         <Row style={{paddingTop: '25px', paddingBottom: '5px'}}>
                             <Col>
                                 <h3> Reviews </h3>
+                                <div className="d-flex w-100 justify-content-start">
+                                    {[...Array(5)].map((star, i) => {
+                                        const ratingValue = i + 1;
+                                        return (
+                                            <label key={ratingValue}>
+                                                <input
+                                                    className='starRadio'
+                                                    type="radio"
+                                                    name="rating"
+                                                    value={ ratingValue }
+                                                    onClick={ () => setRating(ratingValue) }
+                                                />
+                                                <FaStar
+                                                    className='star'
+                                                    color={ ratingValue <= (hover || rating) ? '#ffc107' : '#A9A9A9' }
+                                                    size={25}
+                                                    onMouseEnter={ () => setHover(ratingValue) }
+                                                    onMouseLeave={ () => setNewReview({...newReview, starRating: ratingValue}) }
+                                                />
+                                            </label>
+                                        );
+                                    })}
+                                </div>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={12} lg={12} xl={12}>
-                                <form>
-                                    <textarea placeholder="Write a Review" type="text" rows={4} cols={40} name="comment"/>
+                                <form onSubmit={handleSubmit}>
+                                    <textarea style={{marginTop: '5px'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={newReview.comment} onChange={handleChange}/>
                                     <br/>
-                                    {' '}<button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '5px'}}>Submit</button>
+                                    {' '}<button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '15px', marginTop: '5px', marginBottom: '15px'}}>Submit</button>
                                 </form>
                             </Col>
                         </Row>
