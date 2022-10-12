@@ -32,7 +32,7 @@ function FeaturedBooks() {
                             <Card.Img variant="top" src={b.imageLinks.thumbnail} className="card-img-top" height='350'/>
                             <Card.Body>
                                 <Card.Title>{b.title}</Card.Title>
-                                <Card.Text>{b.authors}</Card.Text>
+                                {b.authors.map((author) => <Card.Text key={author}>{author}</Card.Text>)}
                                 <Link to={`/book/${b.bookId}`}>Book Detail</Link>
                             </Card.Body>
                         </Card>

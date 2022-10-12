@@ -24,8 +24,8 @@ const LocalBookDetail = () =>  {
     let [newReview, setNewReview] = useState({
         comment: "",
         starRating: rating,
-        userId: params.userId,
-        bookId: params.bookId
+        userId: 1,
+        bookId: params.id
     });
 
     useEffect(() => {
@@ -92,7 +92,7 @@ const LocalBookDetail = () =>  {
                             </Col>
                             <Col xs={12} md={6} lg={4} xl={4} style={{paddingBottom: '25px'}}>
                                 <h2>{getBook.title}</h2>
-                                <p>{getBook.authors}</p>
+                                {getBook.authors.map((author) => <p key={author}>{author}</p>)}
                                 <p>{getBook.publisher}</p>
                                 <p>{getBook.publishedDate}</p>
                             </Col>
