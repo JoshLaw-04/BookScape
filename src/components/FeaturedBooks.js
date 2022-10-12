@@ -33,8 +33,7 @@ function FeaturedBooks() {
                             <Card.Body>
                                 <Card.Title>{b.title}</Card.Title>
                                 <Card.Text>{b.authors}</Card.Text>
-                                <Link>Book Details</Link>
-                                {/*<Link to={`/book/${book.id}`} onClick={() => setBook(book)}>Book Detail</Link> */}
+                                <Link to={`/book/${b.bookId}`}>Book Detail</Link>
                             </Card.Body>
                         </Card>
                     ))}
