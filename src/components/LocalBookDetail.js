@@ -25,7 +25,7 @@ const LocalBookDetail = () =>  {
         comment: "",
         starRating: rating,
         userId: 1,
-        bookId: params.id
+        bookId: parseInt(params.id)
     });
 
     useEffect(() => {
@@ -40,7 +40,6 @@ const LocalBookDetail = () =>  {
           }
           fetch()
     },  [])
-
 
     function handleChange(event) {
         setNewReview((prevValue) => {
@@ -84,15 +83,16 @@ const LocalBookDetail = () =>  {
                             <Col xs={12} md={6} lg={4} xl={3} style={{paddingBottom: '25px'}}>
                                 <img 
                                     alt=""
-                                    // src={getBook.imageLinks.thumbnail}
+                                    src={getBook.imageLinks.thumbnail}
                                     width="300"
                                     height="350"
                                     style={{ padding: "5px" }}
                                 />{" "}
                             </Col>
                             <Col xs={12} md={6} lg={4} xl={4} style={{paddingBottom: '25px'}}>
+                                {console.log(getBook)}
                                 <h2>{getBook.title}</h2>
-                                {getBook.authors.map((author) => <p key={author}>{author}</p>)}
+                                {/* {getBook.authors.map((author) => <p key={author}>{author}</p>)} */}
                                 <p>{getBook.publisher}</p>
                                 <p>{getBook.publishedDate}</p>
                             </Col>
