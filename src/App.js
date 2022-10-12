@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import About from './components/About';
-import BookDetail from './components/BookDetail';
+import GoogleBookDetail from './components/GoogleBookDetail';
 import BookList from './components/BookList';
 import Home from './components/Home';
 import SignIn from './components/SignIn';
@@ -12,6 +12,7 @@ import { BooksProvider } from './contexts/BooksProvider';
 import { ReviewProvider } from './contexts/ReviewsProvider';
 import EditReview from './components/EditReview';
 import FeaturedBooks from './components/FeaturedBooks';
+import LocalBookDetail from './components/LocalBookDetail';
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
               <Route path='/booklist' element={<BookList />}/>
               <Route path="/register" element={ <SignUp /> } />
               <Route path="/login" element={ <SignIn /> } />
-              <Route path="/book/detail" element={<BookDetail />} />
+              <Route path="/book/detail" element={<GoogleBookDetail />} />
+              <Route path='/book/:id' element={<LocalBookDetail />}/>
               <Route path="/edit/:id" element={ <EditReview /> } />
               <Route path='/about' element={<About />} />
               <Route path="/profile/:id" element={ <UserProfile /> } />

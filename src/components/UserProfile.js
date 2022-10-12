@@ -71,7 +71,7 @@ function UserProfile() {
                                                         <Col xs={3} sm={3} md={2} lg={1} xl={1}>
                                                             <img 
                                                                 alt=""
-                                                                // src={r.Book.img}
+                                                                src={r.Book.imageLinks.thumbnail}
                                                                 width="100"
                                                                 height="115"
                                                                 style={{ padding: "5px" }}
@@ -79,7 +79,7 @@ function UserProfile() {
                                                         </Col>
                                                         <Col xs={5} sm={5} md={8} lg={9} xl={9}>
                                                             <div className="d-flex w-100 justify-content-start" style={{paddingBottom: '13px'}}>
-                                                                {/* <Link className='ml-auto me-2'>{r.Book.title}</Link> */}
+                                                                <Link to={`/book/${r.Book.bookId}`} className='ml-auto me-2'>{r.Book.title}</Link>
                                                                 <small>{r.starRating}</small> 
                                                             </div>
                                                             <div>
