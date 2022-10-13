@@ -75,7 +75,7 @@ const LocalBookDetail = () =>  {
             {
                 ({reviews}) => {
                     return <>
-                    <Container>
+                    <Container style={{paddingBottom: '75px'}}>
                         <div style={{paddingTop: '15px'}}>
                             <h2>Book Detail</h2><br/>
                         </div>
