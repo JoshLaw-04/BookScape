@@ -50,7 +50,7 @@ const LocalBookDetail = () =>  {
     function handleSubmit(event) {
         event.preventDefault();
         addReview(newReview).then(() => {
-          navigate('/');
+          navigate(`/book/${getBook.bookId}`);
         }).catch(error => {
           console.log(error);
           navigate('/login');
@@ -60,7 +60,7 @@ const LocalBookDetail = () =>  {
 
     function handleDelete(id) {
         deleteReview(id).then(() => {
-            navigate(`/book/${id}`)
+            navigate(`/book/${getBook.bookId}`)
         }).catch(error => {
             console.log(error);
             navigate('/login');
@@ -75,7 +75,7 @@ const LocalBookDetail = () =>  {
             {
                 ({reviews}) => {
                     return <>
-                    <Container>
+                    <Container style={{paddingBottom: '75px'}}>
                         <div style={{paddingTop: '15px'}}>
                             <h2>Book Detail</h2><br/>
                         </div>

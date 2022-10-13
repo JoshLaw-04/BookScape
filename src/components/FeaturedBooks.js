@@ -11,7 +11,7 @@ function FeaturedBooks() {
     function localBookList() {
 
         return (
-            <Container>
+            <Container style={{paddingBottom: '75px'}}>
                 <h1 style={{paddingTop: '25px', paddingLeft: '7px', paddingBottom: '10px'}}>Book List</h1>
                 <div id="CardsCol">
                     <Row>

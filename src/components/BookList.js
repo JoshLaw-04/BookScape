@@ -14,7 +14,7 @@ function BookList() {
         ({searchResults}) => {
             
             return (
-                <Container>
+                <Container style={{paddingBottom: '75px'}}>
                 <h1 style={{paddingTop: '25px', paddingLeft: '7px', paddingBottom: '10px'}}>Book Results</h1>
                 <div id="CardsCol">
                         <Row>

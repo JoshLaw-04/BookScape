@@ -32,7 +32,7 @@ function UserProfile() {
 
     function handleDelete(id) {
         deleteReview(id).then(() => {
-            navigate(`/profile/${id}`)
+            navigate(`/profile/${getUser.userId}`)
         }).catch(error => {
             console.log(error);
             navigate('/login');
@@ -45,7 +45,7 @@ function UserProfile() {
             {
                 ({reviews}) => {
                     return <>
-                    <Container>
+                    <Container style={{paddingBottom: '75px'}}>
                         <Row style={{paddingTop: '25px'}}>
                             <Col xs={3} md={6} lg={4} xl={4}>
                                 <h1>{getUser.username}</h1>
