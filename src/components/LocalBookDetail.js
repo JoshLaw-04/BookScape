@@ -149,7 +149,17 @@ const LocalBookDetail = () =>  {
                                                     <Row style={{paddingBottom: '10px'}}>
                                                         <Col>
                                                             <div className="d-flex w-100 justify-content-start">
-                                                                <small>{r.starRating}</small>
+
+                                                                {[...Array(r.starRating)].map((star, i) => {
+                                                                        let counter = i + 1;
+                                                                        return(
+                                                                            <FaStar
+                                                                                value={counter}
+                                                                                color={'ffc107'}
+                                                                            />
+                                                                        )
+                                                                    })}
+
                                                             </div> 
                                                         </Col>
                                                         <Col>
