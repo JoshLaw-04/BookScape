@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, Fragment } from "react";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { Form, FormControl } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
@@ -7,6 +7,8 @@ import BookContext from "../contexts/BookContext";
 import "./Home.css";
 import logo from './assets/Bookscape.png'
 import Footer from "./Footer";
+import UserContext from "../contexts/UserContext";
+import { FaUser } from 'react-icons/fa';
 
 
 function Home() {
@@ -14,6 +16,30 @@ function Home() {
   const inputElement = useRef('');
 
   const { search, searchHandler, bookSearchReturn } = useContext(BookContext);
+  const { user, loading, signOutUser } = useContext(UserContext);
+
+  const authLink = (
+    <Fragment>
+        <Link className="nav-link" onClick={ signOutUser } href='#!'>
+          Hello { user }!
+          <span className="hide-sm"> Logout</span>
+        </Link>
+        <Link to="/profile/:id" className="nav-link">
+          <FaUser />
+        </Link>
+    </Fragment>
+  );
+
+  const guestLink = (
+    <Fragment>
+      <Link to="/register" className="nav-link">
+        Register
+      </Link>
+      <Link to="/login" className="nav-link">
+        Login
+      </Link>
+    </Fragment>
+  );
 
   function getSearchTerm() {
     searchHandler(inputElement.current.value);
@@ -40,12 +66,10 @@ function Home() {
             <Link to="/about" className="nav-link">
                 About
             </Link>
-            <Link to="/register" className="nav-link">
-                Register
-            </Link>
-            <Link to="/login" className="nav-link">
-                Login
-            </Link>
+            <>
+              { loading === true ? authLink : guestLink }
+            </>
+            
             <Form className="d-flex">
               <FormControl
                 ref={ inputElement }
