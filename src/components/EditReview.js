@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import ReviewContext from "../contexts/ReviewsContext";
+import { FaStar } from 'react-icons/fa';
 
 
 function EditReview() {
@@ -15,6 +16,9 @@ function EditReview() {
         starRating: "",
         userId: getReview.userId
     })
+
+    const [ rating, setRating ] = useState(null);
+    const [ hover, setHover ] = useState(null);
 
     useEffect(() => {
         async function fetch() {
@@ -52,7 +56,29 @@ function EditReview() {
                 <div>
                     <form onSubmit={handleSubmit} style={{paddingLeft: '50px', paddingTop: '50px'}}>
                         <span style={{fontWeight: 'bold'}}>Star Rating:</span><br/>
-                        <input type="text" name="starRating" value={editThisReview.starRating} onChange={handleChange} /><br/><br/>
+                        <div className="d-flex w-100 justify-content-start">
+                            {[...Array(5)].map((star, i) => {
+                                const ratingValue = i + 1;
+                                    return (
+                                        <label key={ratingValue} style={{paddingBottom: '20px'}}>
+                                            <input
+                                                className='starRadio'
+                                                type="radio"
+                                                name="rating"
+                                                value={ ratingValue }
+                                                onClick={ () => setRating(ratingValue) && handleChange}
+                                            />
+                                            <FaStar
+                                                className='star'
+                                                color={ ratingValue <= (hover || rating) ? '#ffc107' : '#A9A9A9' }
+                                                size={25}
+                                                onMouseEnter={ () => setHover(ratingValue) }
+                                                onMouseLeave={ () => setEditThisReview({...editThisReview, starRating: ratingValue}) }
+                                            />
+                                        </label>
+                                    );
+                            })}
+                        </div>
                         <span style={{fontWeight: 'bold'}}>Review:</span><br/>
                         <textarea type="text" name="comment" rows={3} cols={50} value={editThisReview.comment} onChange={handleChange} />
                         <br></br><br></br>
