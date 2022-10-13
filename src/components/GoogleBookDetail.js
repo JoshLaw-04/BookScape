@@ -7,11 +7,14 @@ import ReviewContext from '../contexts/ReviewsContext';
 
 function GoogleBookDetail() {
 
+    let navigate = useNavigate();
+
     //imports from BookProvider
     let { book, setLocalBook } = useContext(BookContext);
 
     //imports from ReviewProvider
     let { addReview } = useContext(ReviewContext);
+
 
     //Star stuff
     const [ rating, setRating ] = useState(null);
@@ -24,6 +27,7 @@ function GoogleBookDetail() {
         starRating: rating,
         comment: ""
     });
+
 
     //data for the book via GoogleAPI
     const title = book.volumeInfo.title
@@ -43,7 +47,10 @@ function GoogleBookDetail() {
     function handleSubmit (event) {
         event.preventDefault()
         setLocalBook(book).then( bookResponse => {
-            addReview({...review, bookId: bookResponse.data.bookId})
+            addReview({...review, bookId: bookResponse.data.bookId}).then(() => {
+                alert('Review created!')
+                navigate(`/book/${bookResponse.data.bookId}`)
+            })
         })
     }
 
@@ -106,7 +113,7 @@ function GoogleBookDetail() {
                 <form onSubmit={handleSubmit}>
                     <textarea style={{marginTop: '5px'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={review.comment} onChange={handleReviewCommentChange}/>
                     <br/>
-                    <button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '15px', marginTop: '5px', marginBottom: '15px'}}>Submit</button>
+                    <button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '15px', marginTop: '5px'}}>Submit</button>
                 </form>
             </Col>
         </Row>
