@@ -16,15 +16,15 @@ function Home() {
   const inputElement = useRef('');
 
   const { search, searchHandler, bookSearchReturn } = useContext(BookContext);
-  const { user, loading, signOutUser } = useContext(UserContext);
+  const { loggedInUser, loading, signOutUser } = useContext(UserContext);
 
   const authLink = (
     <Fragment>
         <Link className="nav-link" onClick={ signOutUser } href='#!'>
-          Hello { user }!
+          Hello { loggedInUser.firstName }!
           <span className="hide-sm"> Logout</span>
         </Link>
-        <Link to="/profile/:id" className="nav-link">
+        <Link to={`/profile/${loggedInUser.userId}`} className="nav-link">
           <FaUser />
         </Link>
     </Fragment>

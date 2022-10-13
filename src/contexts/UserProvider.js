@@ -6,23 +6,29 @@ import UserContext from "./UserContext";
 export const UserProvider = (props) => {
 
     const baseUrl = "http://localhost:3000/api/users/";
-    const [ user, setUser ] = useState([]);
+
+    const [ loggedInUser, setLoggedInUser ] = useState({
+        userId: null,
+        firstName: ""
+    });
+
     const [ loading, setLoading ] = useState(false);
-    //const { id } = useParams();
-    const id = '1'
+
     // not sure how to bring in the user id
     // I tried using getUserProfile, but it was the same error
     // as below
-    useEffect(() => {
-        let myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('myToken')}` 
-        };
-        async function fetch() {
-            await axios.get(baseUrl + id, { headers: myHeaders })
-            .then((response) => setUser(response.data.firstName))
-        }
-        fetch()
-    }, [loading])
+
+    // useEffect(() => {
+    //     let myHeaders = {
+    //         Authorization: `Bearer ${localStorage.getItem('myToken')}` 
+    //     };
+
+    //     async function fetch() {
+    //         await axios.get(baseUrl + id, { headers: myHeaders })
+    //         .then((response) => setUser(response.data.firstName))
+    //     }
+    //     fetch()
+    // }, [loading])
 
     function createUser(newUser) {       
         
@@ -40,6 +46,7 @@ export const UserProvider = (props) => {
             .then(response => {
                 localStorage.setItem('myToken', response.data.token)
                 setLoading(true)
+                setLoggedInUser({...loggedInUser, userId: response.data.userId, firstName: response.data.firstName})
                 return new Promise(resolve => resolve(response.data));
             }
         );
@@ -64,7 +71,7 @@ export const UserProvider = (props) => {
 
     return (
         <UserContext.Provider value={{
-            user,
+            loggedInUser,
             loading,
             createUser,
             signInUser,

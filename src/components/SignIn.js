@@ -28,7 +28,7 @@ const SignIn = () => {
     <>
     
     <Container>
-      <div class="d-flex justify-content-center" style={{paddingTop: '75px'}}>
+      <div className="d-flex justify-content-center" style={{paddingTop: '75px'}}>
         <Row>
           <Col xs='12' sm='12' md='12' lg='12' xl='12' style={{paddingBottom: '20px'}}>
             <h1 style={{textAlign: 'left'}}>LOGIN</h1>
