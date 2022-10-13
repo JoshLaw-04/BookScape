@@ -14,22 +14,6 @@ export const UserProvider = (props) => {
 
     const [ loading, setLoading ] = useState(false);
 
-    // not sure how to bring in the user id
-    // I tried using getUserProfile, but it was the same error
-    // as below
-
-    // useEffect(() => {
-    //     let myHeaders = {
-    //         Authorization: `Bearer ${localStorage.getItem('myToken')}` 
-    //     };
-
-    //     async function fetch() {
-    //         await axios.get(baseUrl + id, { headers: myHeaders })
-    //         .then((response) => setUser(response.data.firstName))
-    //     }
-    //     fetch()
-    // }, [loading])
-
     function createUser(newUser) {       
         
         return axios.post(baseUrl, newUser)
