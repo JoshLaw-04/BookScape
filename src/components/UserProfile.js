@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Container, ListGroup, Row } from 'react-bootstrap';
+import { FaStar } from 'react-icons/fa';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ReviewContext from '../contexts/ReviewsContext';
 import UserContext from '../contexts/UserContext';
@@ -80,7 +81,17 @@ function UserProfile() {
                                                         <Col xs={5} sm={5} md={8} lg={9} xl={9}>
                                                             <div className="d-flex w-100 justify-content-start" style={{paddingBottom: '13px'}}>
                                                                 <Link to={`/book/${r.Book.bookId}`} className='ml-auto me-2'>{r.Book.title}</Link>
-                                                                <small>{r.starRating}</small> 
+                                                                
+                                                                {[...Array(r.starRating)].map((star, i) => {
+                                                                        let counter = i + 1;
+                                                                        return(
+                                                                            <FaStar
+                                                                                value={counter}
+                                                                                color={'ffc107'}
+                                                                            />
+                                                                        )
+                                                                    })}
+
                                                             </div>
                                                             <div>
                                                                 <p className="mb-1" style={{paddingBottom: '5px'}}>{r.comment}</p>
