@@ -49,6 +49,6 @@ footer {
     background-color: #98ffed;
     display: grid;
     place-content: center;
-    position: fixed;
+    position: sticky;
     margin-top: auto;
 }

@@ -32,7 +32,7 @@ function UserProfile() {
 
     function handleDelete(id) {
         deleteReview(id).then(() => {
-            navigate(`/profile/${id}`)
+            navigate(`/profile/${getUser.userId}`)
         }).catch(error => {
             console.log(error);
             navigate('/login');
