@@ -107,7 +107,7 @@ function UserProfile() {
                                                     </Row>
                                                     <Row>
                                                         <Col className="d-flex w-100 justify-content-end" style={{paddingBottom: '5px'}}>    
-                                                            <Link to={`/profile/${r.userId}`} className="nav-link" style={{color: 'white'}}>{r.User.username}</Link> 
+                                                            <Link to={`/profile/${r.userId}`} className="nav-link">{r.User.username}</Link> 
                                                         </Col>
                                                     </Row>
                                                 </ListGroup.Item>

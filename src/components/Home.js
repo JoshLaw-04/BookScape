@@ -20,7 +20,7 @@ function Home() {
 
   const authLink = (
     <Fragment>
-        <Link onClick={ signOutUser } href='#!' className="nav-link">
+        <Link onClick={ signOutUser } to='/login' className="nav-link">
           <span className="hide-sm"> Logout</span>
         </Link>
         <Link to={`/profile/${loggedInUser.userId}`} className="nav-link">
@@ -52,14 +52,16 @@ function Home() {
       <Navbar className="Navbar" expand="lg">
         <Container fluid>
           <Navbar.Brand className="logo">
-            <img
-              alt=""
-              src={logo}
-              width="50"
-              height="50"
-              style={{ padding: "5px" }}
-            />{" "}
-            Bookscape
+            <Link to="/" className="nav-link">
+                <img
+                  alt=""
+                  src={logo}
+                  width="50"
+                  height="50"
+                  style={{ padding: "5px" }}
+                />{" "}
+                Bookscape
+              </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -77,7 +79,7 @@ function Home() {
             <Form className="d-flex">
               <Form.Control
                 ref={ inputElement }
-                type="text"
+                type="search"
                 placeholder="Search"
                 className="me-2"
                 aria-label="search"
