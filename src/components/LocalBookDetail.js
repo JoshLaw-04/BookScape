@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Container, Row, Col, Button, ListGroup, Form, Image } from 'react-bootstrap';
+import { Container, Row, Col, ListGroup } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import ReviewContext from '../contexts/ReviewsContext';
@@ -80,23 +80,24 @@ const LocalBookDetail = () =>  {
                             <h2>Book Detail</h2><br/>
                         </div>
                         <Row>
-                            <Col xs={12} md={6} lg={4} xl={3} style={{paddingBottom: '25px'}}>
+                            <Col xs={12} sm={12} md={6} lg={4} xl={3} style={{paddingBottom: '25px'}}>
+                            
                                 <img 
                                     alt=""
                                     src={getBook.imageLinks && getBook.imageLinks.thumbnail}
-                                    width="300"
-                                    height="350"
+                                    width="275"
+                                    height="325"
                                     style={{ padding: "5px" }}
                                 />{" "}
                             </Col>
-                            <Col xs={12} md={6} lg={4} xl={4} style={{paddingBottom: '25px'}}>
+                            <Col xs={12} sm={12} md={6} lg={4} xl={4} style={{paddingBottom: '25px'}}>
                                 {console.log(getBook)}
                                 <h2>{getBook.title}</h2>
                                 {getBook.authors && getBook.authors.map((author) => <p key={author}>{author}</p>)}
                                 <p>{getBook.publisher}</p>
                                 <p>{getBook.publishedDate}</p>
                             </Col>
-                            <Col xs={12} md={12} lg={4} xl={5}>
+                            <Col xs={12} sm={12} md={12} lg={4} xl={5}>
                                 <p>{getBook.description}</p>
                             </Col>
                         </Row>
@@ -133,7 +134,7 @@ const LocalBookDetail = () =>  {
                                 <form onSubmit={handleSubmit}>
                                     <textarea style={{marginTop: '5px'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={newReview.comment} onChange={handleChange}/>
                                     <br/>
-                                    {' '}<button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '15px', marginTop: '5px', marginBottom: '15px'}}>Submit</button>
+                                    {' '}<button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '15px', marginTop: '5px'}}>Submit</button>
                                 </form>
                             </Col>
                         </Row>
