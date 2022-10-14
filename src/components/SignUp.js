@@ -47,23 +47,23 @@ const SignUp = () => {
                         <Form id='signUpForm' onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" >
                                 <Form.Label>Username:</Form.Label>
-                                <Form.Control type="text" name="username" value={newUser.username} onChange={handleChange} />
+                                <Form.Control placeholder='' type="text" name="username" value={newUser.username} onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 <Form.Label>Password:</Form.Label>
-                                <Form.Control type="password" name="password" value={newUser.password} onChange={handleChange} />
+                                <Form.Control placeholder='' type="password" name="password" value={newUser.password} onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 <Form.Label>First Name:</Form.Label>
-                                <Form.Control type="string" name="firstName" value={newUser.firstName} onChange={handleChange} />
+                                <Form.Control placeholder='' type="string" name="firstName" value={newUser.firstName} onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 <Form.Label>Last Name:</Form.Label>
-                                <Form.Control type="text" name="lastName" value={newUser.lastName} onChange={handleChange} />
+                                <Form.Control placeholder='' type="text" name="lastName" value={newUser.lastName} onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 <Form.Label>Email:</Form.Label>
-                                <Form.Control type="text" name="email" value={newUser.email} onChange={handleChange} />
+                                <Form.Control placeholder='' type="text" name="email" value={newUser.email} onChange={handleChange} />
                             </Form.Group>
                             <Button type="submit" id="saveBtn">Register</Button>
                         </Form>
