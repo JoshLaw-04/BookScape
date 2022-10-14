@@ -73,8 +73,6 @@ function Home() {
               <Link to="/" className="nav-link">Home</Link>
               <Link to="/about" className="nav-link">About</Link>
               <>
-               {console.log(isLoggedIn)}
-               {console.log(loggedInUser)}
                { isLoggedIn === true ? authLink : guestLink }
               </>
             </Nav>
