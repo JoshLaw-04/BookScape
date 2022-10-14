@@ -173,7 +173,7 @@ const LocalBookDetail = () =>  {
                                                     </Row>
                                                     <p className="mb-1" style={{paddingBottom: '5px'}}>{r.comment}</p>
                                                     <div className="d-flex w-100 justify-content-end" style={{paddingBottom: '13px'}}>
-                                                        <Link to={`/profile/${r.User.userId}`} className="nav-link" style={{color: 'white'}}>{r.User.username}</Link> 
+                                                        <Link to={`/profile/${r.userId}`} className="nav-link" style={{color: 'white'}}>{r.User.username}</Link> 
                                                     </div>
                                                 </ListGroup.Item>
                                             </ListGroup>

@@ -1,6 +1,6 @@
 import React, { useContext, useRef, Fragment } from "react";
-import { Navbar, Nav, Container, Button, NavDropdown } from "react-bootstrap";
-import { Form, FormControl } from "react-bootstrap";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
 import { Link, Outlet } from "react-router-dom";
 import BookContext from "../contexts/BookContext";

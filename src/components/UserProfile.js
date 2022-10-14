@@ -12,7 +12,7 @@ function UserProfile() {
     let {id} = useParams();
     let navigate = useNavigate();
 
-    let { getUserProfile } = useContext(UserContext);
+    let { getUserProfile, loggedInUser } = useContext(UserContext);
     let { deleteReview } = useContext(ReviewContext);
     
     let [getUser, setGetUser] = useState("")
@@ -99,15 +99,15 @@ function UserProfile() {
                                                         </Col>
                                                         <Col xs={4} sm={4} md={2} lg={2} xl={2}>
                                                             <div className="d-flex w-100 justify-content-end">
-                                                                <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '}
-                                                                <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>{' '}   
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>}{' '}
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>}{' '}   
                                                             </div>
 
                                                         </Col>  
                                                     </Row>
                                                     <Row>
                                                         <Col className="d-flex w-100 justify-content-end" style={{paddingBottom: '5px'}}>    
-                                                            <Link to={`/profile/${r.User.userId}`} className="nav-link" style={{color: 'white'}}>{r.User.username}</Link> 
+                                                            <Link to={`/profile/${r.userId}`} className="nav-link" style={{color: 'white'}}>{r.User.username}</Link> 
                                                         </Col>
                                                     </Row>
                                                 </ListGroup.Item>
