@@ -16,8 +16,12 @@ function Home() {
   const inputElement = useRef('');
 
   const { search, searchHandler, bookSearchReturn } = useContext(BookContext);
-  const { loggedInUser, loading, signOutUser } = useContext(UserContext);
+  const { loggedInUser, isLoggedIn, signOutUser } = useContext(UserContext);
 
+  function getSearchTerm() {
+    searchHandler(inputElement.current.value);
+  }
+  
   const authLink = (
     <Fragment>
         <Link onClick={ signOutUser } to='/login' className="nav-link">
@@ -42,10 +46,6 @@ function Home() {
       </Link>
     </Fragment>
   );
-
-  function getSearchTerm() {
-    searchHandler(inputElement.current.value);
-  }
 
   return (
     <>
@@ -73,7 +73,9 @@ function Home() {
               <Link to="/" className="nav-link">Home</Link>
               <Link to="/about" className="nav-link">About</Link>
               <>
-                { loading === true ? authLink : guestLink }
+               {console.log(isLoggedIn)}
+               {console.log(loggedInUser)}
+               { isLoggedIn === true ? authLink : guestLink }
               </>
             </Nav>
             <Form className="d-flex">

@@ -12,10 +12,9 @@ export const UserProvider = (props) => {
         firstName: ""
     });
 
-    const [ loading, setLoading ] = useState(false);
+    const [ isLoggedIn, setisLoggedIn ] = useState(false);
 
-    function createUser(newUser) {       
-        
+    function createUser(newUser) {          
         return axios.post(baseUrl, newUser)
             .then(response => {
                 return new Promise(resolve => resolve(response.data));
@@ -29,7 +28,7 @@ export const UserProvider = (props) => {
         return axios.post(`${baseUrl}login`, user)
             .then(response => {
                 localStorage.setItem('myToken', response.data.token)
-                setLoading(true)
+                setisLoggedIn(true)
                 setLoggedInUser({...loggedInUser, userId: response.data.userId, firstName: response.data.firstName})
                 return new Promise(resolve => resolve(response.data));
             }
@@ -37,7 +36,7 @@ export const UserProvider = (props) => {
     }
         
     function signOutUser() {
-        setLoading(false);
+        setisLoggedIn(false);
         return localStorage.clear();
     }
 
@@ -56,7 +55,7 @@ export const UserProvider = (props) => {
     return (
         <UserContext.Provider value={{
             loggedInUser,
-            loading,
+            isLoggedIn,
             createUser,
             signInUser,
             signOutUser,

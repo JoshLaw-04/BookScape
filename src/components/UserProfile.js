@@ -29,7 +29,7 @@ function UserProfile() {
             })
           }
           fetch()
-    },  [])
+    },  [getUserProfile(id)])
 
     function handleDelete(id) {
         deleteReview(id).then(() => {
