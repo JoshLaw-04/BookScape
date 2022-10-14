@@ -7,8 +7,8 @@ function Footer() {
     let year = today.getFullYear();
 
     return (
-        <footer>
-            <p>Bookscape &copy; { month }/{day}/{ year } </p>
+        <footer>   
+            <p>Bookscape &copy; • { month }/{day}/{ year }</p> 
         </footer>
     )
 }

@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Container, Row, Col, Button, ListGroup, Form } from 'react-bootstrap';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import { FaStar } from 'react-icons/fa';
 import ReviewContext from '../contexts/ReviewsContext';
@@ -61,22 +61,22 @@ function GoogleBookDetail() {
             <h2>Book Detail</h2><br/>
         </div>
         <Row>
-            <Col xs={12} md={6} lg={4} xl={3} style={{paddingBottom: '25px'}}>
+            <Col xs={12} sm={12} md={6} lg={4} xl={3} style={{paddingBottom: '25px'}}>
             <img 
                 alt=""
                 src={bookPic}
-                width="300"
-                height="350"
+                width="275"
+                height="325"
                 style={{ padding: "5px" }}
             />{" "}
             </Col>
-            <Col xs={12} md={6} lg={4} xl={4} style={{paddingBottom: '25px'}}>
+            <Col xs={12} sm={12} md={6} lg={4} xl={4} style={{paddingBottom: '25px'}}>
                 <h2>{title}</h2>
                 {authors.map((author) => <p key={author}>{author}</p>)}
                 {pubCo && <p>{pubCo}</p>}
                 {pubDate && <p>{pubDate}</p>}
             </Col>
-            <Col xs={12} md={12} lg={4} xl={5}>
+            <Col xs={12} sm={12} md={12} lg={4} xl={5}>
                 {description && <p>{description}</p>}
             </Col>
         </Row>

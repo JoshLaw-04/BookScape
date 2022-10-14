@@ -12,7 +12,7 @@ function UserProfile() {
     let {id} = useParams();
     let navigate = useNavigate();
 
-    let { getUserProfile } = useContext(UserContext);
+    let { getUserProfile, loggedInUser } = useContext(UserContext);
     let { deleteReview } = useContext(ReviewContext);
     
     let [getUser, setGetUser] = useState("")
@@ -29,7 +29,7 @@ function UserProfile() {
             })
           }
           fetch()
-    },  [])
+    },  [getUserProfile(id)])
 
     function handleDelete(id) {
         deleteReview(id).then(() => {
@@ -69,16 +69,16 @@ function UserProfile() {
                                             <ListGroup className="align-self-start w-80" key={r.reviewId}>
                                                 <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#98ffed' }}>
                                                     <Row>
-                                                        <Col xs={3} sm={3} md={2} lg={1} xl={1}>
+                                                        <Col xs={3} sm={3} md={2} lg={2} xl={1}>
                                                             <img 
                                                                 alt=""
                                                                 src={r.Book.imageLinks.thumbnail}
-                                                                width="100"
-                                                                height="115"
+                                                                width="105"
+                                                                height="130"
                                                                 style={{ padding: "5px" }}
                                                             />{" "}
                                                         </Col>
-                                                        <Col xs={5} sm={5} md={8} lg={9} xl={9}>
+                                                        <Col xs={6} sm={6} md={8} lg={8} xl={9} style={{paddingLeft: '35px'}}>
                                                             <div className="d-flex w-100 justify-content-start" style={{paddingBottom: '13px'}}>
                                                                 <Link to={`/book/${r.Book.bookId}`} className='ml-auto me-2'>{r.Book.title}</Link>
                                                                 
@@ -97,17 +97,17 @@ function UserProfile() {
                                                                 <p className="mb-1" style={{paddingBottom: '5px'}}>{r.comment}</p>
                                                             </div>
                                                         </Col>
-                                                        <Col xs={4} sm={4} md={2} lg={2} xl={2}>
+                                                        <Col xs={3} sm={3} md={2} lg={2} xl={2}>
                                                             <div className="d-flex w-100 justify-content-end">
-                                                                <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '}
-                                                                <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>{' '}   
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>}{' '}
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>}{' '}   
                                                             </div>
 
                                                         </Col>  
                                                     </Row>
                                                     <Row>
                                                         <Col className="d-flex w-100 justify-content-end" style={{paddingBottom: '5px'}}>    
-                                                            <Link to={`/profile/${r.User.userId}`} className="nav-link" style={{color: 'white'}}>{r.User.username}</Link> 
+                                                            <Link to={`/profile/${r.userId}`} className="nav-link">{r.User.username}</Link> 
                                                         </Col>
                                                     </Row>
                                                 </ListGroup.Item>
