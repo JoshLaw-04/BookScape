@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import ReviewContext from '../contexts/ReviewsContext';
 import { FaStar } from 'react-icons/fa';
+import UserContext from '../contexts/UserContext';
 
 
 const LocalBookDetail = () =>  {
@@ -14,6 +15,7 @@ const LocalBookDetail = () =>  {
 
     let { getLocalBook } = useContext(BookContext);
     let { deleteReview, addReview } = useContext(ReviewContext);
+    let { loggedInUser } = useContext(UserContext);
     
     let [getBook, setGetBook] = useState("")
 
@@ -165,8 +167,8 @@ const LocalBookDetail = () =>  {
                                                         </Col>
                                                         <Col>
                                                             <div className="d-flex w-100 justify-content-end">
-                                                                <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '}
-                                                                <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>{' '}   
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>}{' '}
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>}{' '}   
                                                             </div>
 
                                                         </Col>
