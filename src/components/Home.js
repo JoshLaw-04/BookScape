@@ -1,4 +1,4 @@
-import React, { useContext, useRef, Fragment, useState } from "react";
+import React, { useContext, useRef, Fragment, useEffect } from "react";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
@@ -13,11 +13,30 @@ import { FaUser } from 'react-icons/fa';
 
 function Home() {
 
+  const ClickIt = () => {
+    // your logic here
+    document.getElementById("Clickbutton").click();
+  };
+
+  useEffect(() => {
+    const keyDownHandler = event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        ClickIt();
+      }
+  };
+
+  document.addEventListener('keydown', keyDownHandler);
+
+  return () => {
+    document.removeEventListener('keydown', keyDownHandler);
+  };
+  }, []);
+
   const inputElement = useRef('');
 
   const { search, searchHandler, bookSearchReturn } = useContext(BookContext);
   const { loggedInUser, isLoggedIn, signOutUser } = useContext(UserContext);
-
 
   function getSearchTerm() {
     searchHandler(inputElement.current.value);
@@ -90,7 +109,7 @@ function Home() {
                 value={ search }
                 onChange={ getSearchTerm }
               />
-              <Button onClick={bookSearchReturn} variant="primary">Search</Button>
+              <Button id="Clickbutton" onClick={bookSearchReturn} variant="primary">Search</Button>
             </Form>
           </Navbar.Collapse>
         </Container>
