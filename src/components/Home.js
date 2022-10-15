@@ -1,6 +1,6 @@
-import React, { useContext, useRef, Fragment, useState } from "react";
-import { Navbar, Nav, Container, Button } from "react-bootstrap";
-import { Form } from "react-bootstrap";
+import React, { useEffect, useState, useContext, useRef, Fragment } from "react";
+import { Navbar, Nav, Container, Button, NavItem } from "react-bootstrap";
+import { Form, FormControl } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
 import { Link, Outlet } from "react-router-dom";
 import BookContext from "../contexts/BookContext";
@@ -9,31 +9,45 @@ import logo from './assets/Bookscape.png'
 import Footer from "./Footer";
 import UserContext from "../contexts/UserContext";
 import { FaUser } from 'react-icons/fa';
+import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
+
 
 
 function Home() {
 
+  const ClickIt = () => {
+    // your logic here
+    document.getElementById("Clickbutton").click();
+  };
+
+  useEffect(() => {
+    const keyDownHandler = event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        ClickIt();
+      }
+    };
+
+    document.addEventListener('keydown', keyDownHandler);
+
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  }, []);
+
   const inputElement = useRef('');
 
   const { search, searchHandler, bookSearchReturn } = useContext(BookContext);
-  const { loggedInUser, isLoggedIn, signOutUser } = useContext(UserContext);
+  const { loggedInUser, loading, signOutUser } = useContext(UserContext);
 
-
-  function getSearchTerm() {
-    searchHandler(inputElement.current.value);
-  }
-
-  
   const authLink = (
     <Fragment>
-        <Link onClick={ signOutUser } className="nav-link">
+        <Link className="nav-link" onClick={ signOutUser } href='#!'>
+          Hello { loggedInUser.firstName }!
           <span className="hide-sm"> Logout</span>
         </Link>
         <Link to={`/profile/${loggedInUser.userId}`} className="nav-link">
-          <div>
-            <FaUser style={{marginRight: '2px'}}/>
-            Hello { loggedInUser.firstName }!
-          </div>
+          <FaUser />
         </Link>
     </Fragment>
   );
@@ -49,60 +63,58 @@ function Home() {
     </Fragment>
   );
 
+  function getSearchTerm() {
+    searchHandler(inputElement.current.value);
+  }
+
   return (
     <>
-      <Navbar className="Navbar" expand="lg">
-        <Container fluid>
-          <Navbar.Brand className="logo">
-            <Link to="/" className="nav-link">
-                <img
-                  alt=""
-                  src={logo}
-                  width="50"
-                  height="50"
-                  style={{ padding: "5px" }}
-                />{" "}
-                Bookscape
-              </Link>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: '100px' }}
-              navbarScroll
-            >
-              <Link to="/" className="nav-link">Home</Link>
-              <Link to="/about" className="nav-link">About</Link>
-              <>
-               {console.log(isLoggedIn)}
-               {console.log(loggedInUser)}
-               { isLoggedIn === true ? authLink : guestLink }
-              </>
-            </Nav>
+      <Navbar className="Navbar">
+        <Navbar.Brand className="logo">
+          <img
+            alt=""
+            src={logo}
+            width="50"
+            height="50"
+            style={{ padding: "5px" }}
+          />{" "}
+          Bookscape
+        </Navbar.Brand>
+        <NavItem></NavItem>
+        <Container className="justify-content-end">
+          <Nav>
+            <Link to="/" className="nav-link c-white">
+                Home
+            </Link>
+            <Link to="/about" className="nav-link">
+                About
+            </Link>
+            <>
+              { loading === true ? authLink : guestLink }
+            </>
+            
             <Form className="d-flex">
-              <Form.Control
+              <FormControl
                 ref={ inputElement }
-                type="search"
+                type="text"
                 placeholder="Search"
                 className="me-2"
                 aria-label="search"
                 value={ search }
                 onChange={ getSearchTerm }
+              
               />
-              <Button onClick={bookSearchReturn} variant="primary">Search</Button>
+              <Button id="Clickbutton" onClick={bookSearchReturn}>Find</Button>
             </Form>
-          </Navbar.Collapse>
+          </Nav>
         </Container>
       </Navbar>
+
       <Stack>
         <Outlet />
       </Stack>
       <Footer />
     </>
-
-    
-   
   );
 }
 
