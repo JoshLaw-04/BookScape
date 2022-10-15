@@ -48,7 +48,6 @@ function GoogleBookDetail() {
         event.preventDefault()
         setLocalBook(book).then( bookResponse => {
             addReview({...review, bookId: bookResponse.data.bookId}).then(() => {
-                alert('Review created!')
                 navigate(`/book/${bookResponse.data.bookId}`)
             })
         })
