@@ -1,4 +1,4 @@
-import React, { useContext, useRef, Fragment } from "react";
+import React, { useContext, useRef, Fragment, useState } from "react";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
@@ -18,6 +18,7 @@ function Home() {
   const { search, searchHandler, bookSearchReturn } = useContext(BookContext);
   const { loggedInUser, isLoggedIn, signOutUser } = useContext(UserContext);
 
+
   function getSearchTerm() {
     searchHandler(inputElement.current.value);
   }
@@ -25,7 +26,7 @@ function Home() {
   
   const authLink = (
     <Fragment>
-        <Link onClick={ signOutUser } to='/login' className="nav-link">
+        <Link onClick={ signOutUser } className="nav-link">
           <span className="hide-sm"> Logout</span>
         </Link>
         <Link to={`/profile/${loggedInUser.userId}`} className="nav-link">
