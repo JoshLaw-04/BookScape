@@ -26,7 +26,7 @@ const LocalBookDetail = () =>  {
     let [newReview, setNewReview] = useState({
         comment: "",
         starRating: rating,
-        userId: 1,
+        userId: null,
         bookId: parseInt(params.id)
     });
 

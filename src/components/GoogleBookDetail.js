@@ -22,7 +22,7 @@ function GoogleBookDetail() {
 
     //Review data
     const [ review, setReview] = useState({
-        userId: 1,
+        userId: null,
         bookId: null,
         starRating: rating,
         comment: ""
