@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Container, Row, Col, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, ListGroup, Button } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import ReviewContext from '../contexts/ReviewsContext';
@@ -136,7 +136,7 @@ const LocalBookDetail = () =>  {
                                 <form onSubmit={handleSubmit}>
                                     <textarea style={{marginTop: '5px'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={newReview.comment} onChange={handleChange}/>
                                     <br/>
-                                    {' '}<button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '15px', marginTop: '5px'}}>Submit</button>
+                                    {' '}<Button style={{marginBottom: '15px', marginTop: '5px'}} type='submit' variant="danger">Submit</Button>
                                 </form>
                             </Col>
                         </Row>

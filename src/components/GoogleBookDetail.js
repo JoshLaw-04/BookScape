@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import { FaStar } from 'react-icons/fa';
@@ -113,7 +113,7 @@ function GoogleBookDetail() {
                 <form onSubmit={handleSubmit}>
                     <textarea style={{marginTop: '5px'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={review.comment} onChange={handleReviewCommentChange}/>
                     <br/>
-                    <button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '15px', marginTop: '5px'}}>Submit</button>
+                    {' '}<Button style={{marginBottom: '15px', marginTop: '5px'}} type='submit' variant="danger">Submit</Button>
                 </form>
             </Col>
         </Row>

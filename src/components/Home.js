@@ -21,6 +21,7 @@ function Home() {
   function getSearchTerm() {
     searchHandler(inputElement.current.value);
   }
+
   
   const authLink = (
     <Fragment>
