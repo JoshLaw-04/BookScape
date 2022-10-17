@@ -41,7 +41,7 @@ function About() {
             return (
                 <Row key={i} style={{paddingBottom: '80px'}}>
                     <Col xs='12' sm='12' md='5' lg='5' xl='6'>
-                        <img variant="top" src={image} style={{padding: '5px'}} width= '215px' height='200px'/>
+                        <img variant="top" src={image} style={{padding: '5px'}} width= '215px' height='200px' alt='teammember'/>
                         <h4>{name}</h4>
                         
                     </Col>

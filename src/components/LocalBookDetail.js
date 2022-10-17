@@ -41,7 +41,7 @@ const LocalBookDetail = () =>  {
             })
           }
           fetch()
-    },  [])
+    },  [getLocalBook, navigate, params.id])
 
     function handleChange(event) {
         setNewReview((prevValue) => {

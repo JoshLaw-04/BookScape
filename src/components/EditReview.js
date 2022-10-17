@@ -26,7 +26,7 @@ function EditReview() {
             .then((reviews) => setEditThisReview(reviews))
           }
           fetch()
-    },  [])
+    },  [getReview, id])
 
     function handleChange(event) {
         setEditThisReview((prevValue) => {
