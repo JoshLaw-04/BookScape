@@ -53,7 +53,6 @@ export const UserProvider = (props) => {
     function signOutUser() {
         setisLoggedIn(false);
         localStorage.clear()
-        refresh();
     }
 
     function getUserProfile(id) {
