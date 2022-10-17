@@ -32,7 +32,7 @@ function About() {
             name: 'Joshua Law', 
             role: 'Frontend Developer',
             image: josh,
-            about: 'From a young age I was involved in the tech industry. My parents own a website design company and through many fire place business chats my love for the industry bloomed. Within the month I had buried myself in coding content and decided to sign up for Bethel Tech’s full stack web design program. Other than my passion for coding and web design I love rock climbing, the great outdoors, boating and most of all body building.'
+            about: 'From a young age, Josh was involved in the tech industry. His parents own a website design company, and his love for the industry bloomed through many fireplace business chats. Within a month, he had buried himself in coding content and decided to sign up for Bethel Tech’s Full stack web design program. Besides his passion for coding and web design, he loves rock climbing, the great outdoors, boating and bodybuilding.'
         }
     ]
 

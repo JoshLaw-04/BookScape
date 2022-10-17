@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import UserContext from "./UserContext";
 
 export const UserProvider = (props) => {
@@ -34,23 +33,30 @@ export const UserProvider = (props) => {
             }
         );
     }
+
+
+    const refresh = ()=>{
+     window.location.reload();
+    }
+
         
     function signOutUser() {
         setisLoggedIn(false);
-        return localStorage.clear();
+        localStorage.clear()
+        refresh();
     }
 
     function getUserProfile(id) {
-                let myHeaders = {
-                    Authorization: `Bearer ${localStorage.getItem('myToken')}` 
-                };
+        let myHeaders = {
+            Authorization: `Bearer ${localStorage.getItem('myToken')}` 
+        };
                 
-                return axios.get(baseUrl + id, { headers: myHeaders })
-                    .then(response => {
-                        return new Promise((resolve) => resolve(response.data));
-                    }
-                );
+        return axios.get(baseUrl + id, { headers: myHeaders })
+            .then(response => {
+                return new Promise((resolve) => resolve(response.data));
             }
+        );
+    }
 
     return (
         <UserContext.Provider value={{

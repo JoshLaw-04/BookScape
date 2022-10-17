@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Container, Row, Col, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, ListGroup, Button } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import ReviewContext from '../contexts/ReviewsContext';
 import { FaStar } from 'react-icons/fa';
+import UserContext from '../contexts/UserContext';
 
 
 const LocalBookDetail = () =>  {
@@ -14,6 +15,7 @@ const LocalBookDetail = () =>  {
 
     let { getLocalBook } = useContext(BookContext);
     let { deleteReview, addReview } = useContext(ReviewContext);
+    let { loggedInUser } = useContext(UserContext);
     
     let [getBook, setGetBook] = useState("")
 
@@ -24,7 +26,7 @@ const LocalBookDetail = () =>  {
     let [newReview, setNewReview] = useState({
         comment: "",
         starRating: rating,
-        userId: 1,
+        userId: null,
         bookId: parseInt(params.id)
     });
 
@@ -134,7 +136,7 @@ const LocalBookDetail = () =>  {
                                 <form onSubmit={handleSubmit}>
                                     <textarea style={{marginTop: '5px'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={newReview.comment} onChange={handleChange}/>
                                     <br/>
-                                    {' '}<button type='submit' style={{backgroundColor: 'red', color: 'white', marginBottom: '15px', marginTop: '5px'}}>Submit</button>
+                                    {' '}<Button style={{marginBottom: '15px', marginTop: '5px'}} type='submit' variant="danger">Submit</Button>
                                 </form>
                             </Col>
                         </Row>
@@ -165,8 +167,8 @@ const LocalBookDetail = () =>  {
                                                         </Col>
                                                         <Col>
                                                             <div className="d-flex w-100 justify-content-end">
-                                                                <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>{' '}
-                                                                <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>{' '}   
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>}{' '}
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>}{' '}   
                                                             </div>
 
                                                         </Col>
