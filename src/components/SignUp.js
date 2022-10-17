@@ -32,7 +32,7 @@ const SignUp = () => {
         }).catch(error => {
             console.log(error);
             console.log(newUser);
-            window.alert('Failed registration: error creating user');
+            window.alert('Failed registration: ' + error.response.data);
         });
     }
 
@@ -47,7 +47,7 @@ const SignUp = () => {
                         <Form id='signUpForm' onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" >
                                 <Form.Label>Username:</Form.Label>
-                                <Form.Control placeholder='Enter Username' type="text" name="username" value={newUser.username} onChange={handleChange} />
+                                <Form.Control placeholder='Enter Username' type="text" name="username" required value={newUser.username} onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 <Form.Label>Password:</Form.Label>

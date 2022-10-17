@@ -47,13 +47,15 @@ export const BooksProvider = (props) => {
         .catch(err=>console.log(err));
     };
 
-    function setLocalBook(book) {
+    async function setLocalBook(book) {
         let myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myToken')}`
         };
 
         //ADD HEADERS INTO POST REQUEST for final run thru **************
-        return axios.post(localBookURL, book, { headers: myHeaders })
+        const axiosCall = await axios.post(localBookURL, book, { headers: myHeaders })
+        getAllLocalBooks();
+        return axiosCall;
     }
 
     return (
