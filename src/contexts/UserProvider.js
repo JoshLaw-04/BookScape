@@ -14,18 +14,28 @@ export const UserProvider = (props) => {
     const [ isLoggedIn, setisLoggedIn ] = useState(false);
 
     useEffect(() => {
-        async function loadUser() {
-            // TODO load token
+        const token = localStorage.getItem('myToken');
+        if (token){
+            setisLoggedIn(true);
+            const firstName = localStorage.getitem('firstName');
             const userId = localStorage.getItem('userId');
-            if (userId) {
-                setisLoggedIn(true);
-                const firstName = localStorage.getItem('firstName');
-                const token = localStorage.getItem('myToken');
-                setLoggedInUser({userId, firstName})
-            }
+            setLoggedInUser({userId, firstName})
         }
-        loadUser();
     }, []);
+
+    // useEffect(() => {
+    //     async function loadUser() {
+    //         // TODO load token
+    //         const userId = localStorage.getItem('userId');
+    //         if (userId) {
+    //             setisLoggedIn(true);
+    //             const firstName = localStorage.getItem('firstName');
+    //             const token = localStorage.getItem('myToken');
+    //             setLoggedInUser({userId, firstName})
+    //         }
+    //     }
+    //     loadUser();
+    // }, []);
 
     function createUser(newUser) {          
         return axios.post(baseUrl, newUser)
@@ -52,7 +62,7 @@ export const UserProvider = (props) => {
         
     function signOutUser() {
         setisLoggedIn(false);
-        localStorage.clear()
+        localStorage.clear();
     }
 
     function getUserProfile(id) {

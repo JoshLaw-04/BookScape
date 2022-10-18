@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { useContext } from "react";
+import { Card, Container, Row } from 'react-bootstrap';
 import "./Home.css";
 import BookContext from "../contexts/BookContext";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function BookList() {
 
@@ -44,14 +44,14 @@ function BookList() {
 
                                                 <Link to={'/book/detail'} onClick={() => setBook(book)}>Book Details</Link>
 
-                                                {/*<Link to={`/book/${book.id}`} onClick={() => setBook(book)}>Book Detail</Link> */}
                                                 </Card.Body>
                                         </Card>
                                         )
                                 } else {
                                     <p>No books found 😣</p>
                                 }
-                            })}
+                            }
+                            )}
                         </Row>
                 </div>
                 </Container>
