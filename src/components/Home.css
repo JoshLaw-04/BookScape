@@ -60,3 +60,27 @@ footer {
     margin-top: auto;
 }
 
+h1, h2, h3, h4 {
+    color: whitesmoke;
+}
+
+label {
+    color: whitesmoke;
+}
+
+p {
+    color: whitesmoke;
+}
+
+.card {
+    background-color: rgba(99, 125, 71, 0.85) !important;
+}
+
+.card-title {
+    color: whitesmoke;
+}
+
+a {
+    color: #13200D !important;
+    font-weight: bold;
+}

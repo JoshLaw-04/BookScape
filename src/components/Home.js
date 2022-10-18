@@ -107,7 +107,7 @@ function Home() {
                 value={ search }
                 onChange={ getSearchTerm }
               />
-              <Button id="Clickbutton" onClick={bookSearchReturn} variant="primary">Search</Button>
+              <Button id="Clickbutton" onClick={bookSearchReturn} variant="success">Find</Button>
             </Form>
           </Navbar.Collapse>
         </Container>

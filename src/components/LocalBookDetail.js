@@ -77,7 +77,7 @@ const LocalBookDetail = () =>  {
             {
                 ({reviews}) => {
                     return <>
-                    <Container style={{paddingBottom: '75px'}}>
+                    <Container style={{paddingBottom: '75px', backgroundColor:'rgba(99, 125, 71, 0.85)'}}>
                         <div style={{paddingTop: '15px'}}>
                             <h2>Book Detail</h2><br/>
                         </div>
@@ -136,7 +136,7 @@ const LocalBookDetail = () =>  {
                                 <form onSubmit={handleSubmit}>
                                     <textarea style={{marginTop: '5px'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={newReview.comment} onChange={handleChange}/>
                                     <br/>
-                                    {' '}<Button style={{marginBottom: '15px', marginTop: '5px'}} type='submit' variant="danger">Submit</Button>
+                                    {' '}<Button style={{marginBottom: '15px', marginTop: '5px'}} type='submit' variant="dark">Submit</Button>
                                 </form>
                             </Col>
                         </Row>
@@ -148,7 +148,7 @@ const LocalBookDetail = () =>  {
                                     <Row>
                                         <Col xs={12} md={12} lg={12} xl={12}>
                                             <ListGroup className="align-self-start w-80" key={r.bookId}>
-                                                <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#98ffed' }}>
+                                                <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#1D5C03' }}>
                                                     <Row style={{paddingBottom: '10px'}}>
                                                         <Col>
                                                             <div className="d-flex w-100 justify-content-start">

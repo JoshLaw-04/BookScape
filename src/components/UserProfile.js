@@ -46,7 +46,7 @@ function UserProfile() {
             {
                 ({reviews}) => {
                     return <>
-                    <Container style={{paddingBottom: '75px'}}>
+                    <Container style={{paddingBottom: '75px', backgroundColor: 'rgba(99, 125, 71, 0.85)'}}>
                         <Row style={{paddingTop: '25px'}}>
                             <Col xs={3} md={6} lg={4} xl={4}>
                                 <h1>{getUser.username}</h1>
@@ -67,7 +67,7 @@ function UserProfile() {
                                     <Row>
                                         <Col xs={12} md={12} lg={12} xl={12}>
                                             <ListGroup className="align-self-start w-80" key={r.reviewId}>
-                                                <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#98ffed' }}>
+                                                <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#1D5C03' }}>
                                                     <Row>
                                                         <Col xs={3} sm={3} md={2} lg={2} xl={1}>
                                                             <img 
