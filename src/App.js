@@ -13,6 +13,7 @@ import { ReviewProvider } from './contexts/ReviewsProvider';
 import EditReview from './components/EditReview';
 import FeaturedBooks from './components/FeaturedBooks';
 import LocalBookDetail from './components/LocalBookDetail';
+import "./components/Home.css";
 
 function App() {
   return (

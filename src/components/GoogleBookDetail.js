@@ -57,7 +57,7 @@ function GoogleBookDetail() {
   return (
     <Container style={{paddingBottom: '75px'}}>
         <div style={{paddingTop: '15px'}}>
-            <h2>Book Detail</h2><br/>
+            <h2 style={{fontFamily: 'raleway'}}>Book Detail</h2><br/>
         </div>
         <Row>
             <Col xs={12} sm={12} md={6} lg={4} xl={3} style={{paddingBottom: '25px'}}>
@@ -70,18 +70,18 @@ function GoogleBookDetail() {
             />{" "}
             </Col>
             <Col xs={12} sm={12} md={6} lg={4} xl={4} style={{paddingBottom: '25px'}}>
-                <h2>{title}</h2>
-                {authors.map((author) => <p key={author}>{author}</p>)}
-                {pubCo && <p>{pubCo}</p>}
-                {pubDate && <p>{pubDate}</p>}
+                <h2 style={{fontFamily: 'raleway'}}>{title}</h2>
+                {authors.map((author) => <p style={{fontFamily: 'raleway'}} key={author}>{author}</p>)}
+                {pubCo && <p style={{fontFamily: 'raleway'}}>{pubCo}</p>}
+                {pubDate && <p style={{fontFamily: 'raleway'}}>{pubDate}</p>}
             </Col>
             <Col xs={12} sm={12} md={12} lg={4} xl={5}>
-                {description && <p>{description}</p>}
+                {description && <p style={{fontFamily: 'raleway'}}>{description}</p>}
             </Col>
         </Row>
         <Row style={{paddingTop: '25px', paddingBottom: '5px'}}>
             <Col>
-                <h3> Reviews </h3>
+                <h3 style={{fontFamily: 'raleway'}}> Reviews </h3>
                 <div className="d-flex w-100 justify-content-start">
                     {[...Array(5)].map((star, i) => {
                         const ratingValue = i + 1;
@@ -110,9 +110,9 @@ function GoogleBookDetail() {
         <Row>
             <Col xs={12} md={12} lg={12} xl={12}>
                 <form onSubmit={handleSubmit}>
-                    <textarea style={{marginTop: '5px'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={review.comment} onChange={handleReviewCommentChange}/>
+                    <textarea style={{marginTop: '5px', fontFamily: 'raleway'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={review.comment} onChange={handleReviewCommentChange}/>
                     <br/>
-                    {' '}<Button style={{marginBottom: '15px', marginTop: '5px'}} type='submit' variant="danger">Submit</Button>
+                    {' '}<Button style={{marginBottom: '15px', marginTop: '5px', backgroundColor: '#070B04', border: '#070B04', fontFamily: 'raleway'}} type='submit' variant="dark">Submit</Button>
                 </form>
             </Col>
         </Row>

@@ -44,10 +44,10 @@ function Home() {
   
   const authLink = (
     <Fragment>
-        <Link onClick={ signOutUser } className="nav-link">
+        <Link style={{fontFamily: 'raleway'}} onClick={ signOutUser } className="nav-link">
           <span className="hide-sm"> Logout</span>
         </Link>
-        <Link to={`/profile/${loggedInUser.userId}`} className="nav-link">
+        <Link style={{fontFamily: 'raleway'}} to={`/profile/${loggedInUser.userId}`} className="nav-link">
           <div>
             <FaUser style={{marginRight: '2px'}}/>
             Hello { loggedInUser.firstName }!
@@ -58,10 +58,10 @@ function Home() {
 
   const guestLink = (
     <Fragment>
-      <Link to="/register" className="nav-link">
+      <Link style={{fontFamily: 'raleway'}}  to="/register" className="nav-link">
         Register
       </Link>
-      <Link to="/login" className="nav-link">
+      <Link style={{fontFamily: 'raleway'}}  to="/login" className="nav-link">
         Login
       </Link>
     </Fragment>
@@ -72,7 +72,7 @@ function Home() {
       <Navbar className="Navbar" expand="lg">
         <Container fluid>
           <Navbar.Brand className="logo">
-            <Link to="/" className="nav-link">
+            <Link style={{fontFamily: 'raleway'}}  to="/" className="nav-link">
                 <img
                   alt=""
                   src={logo}
@@ -83,15 +83,15 @@ function Home() {
                 Bookscape
               </Link>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Toggle aria-controls="navbarScroll" style={{backgroundColor:'#637D47'}} />
           <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Link to="/" className="nav-link">Home</Link>
-              <Link to="/about" className="nav-link">About</Link>
+              <Link style={{fontFamily: 'raleway'}}  to="/" className="nav-link">Home</Link>
+              <Link style={{fontFamily: 'raleway'}}  to="/about" className="nav-link">About</Link>
               <>
                { isLoggedIn === true ? authLink : guestLink }
               </>
@@ -105,8 +105,9 @@ function Home() {
                 aria-label="search"
                 value={ search }
                 onChange={ getSearchTerm }
+                style={{fontFamily: 'raleway'}}
               />
-              <Button id="Clickbutton" onClick={bookSearchReturn} variant="primary">Search</Button>
+              <Button id="Clickbutton" onClick={bookSearchReturn} style={{backgroundColor: '#637D47', border: '#637D47', fontFamily: 'raleway'}}>Find</Button>
             </Form>
           </Navbar.Collapse>
         </Container>

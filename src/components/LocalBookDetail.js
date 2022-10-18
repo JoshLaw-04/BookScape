@@ -77,9 +77,9 @@ const LocalBookDetail = () =>  {
             {
                 ({reviews}) => {
                     return <>
-                    <Container style={{paddingBottom: '75px'}}>
+                    <Container style={{paddingBottom: '75px', backgroundColor:'rgba(99, 125, 71, 0.85)'}}>
                         <div style={{paddingTop: '15px'}}>
-                            <h2>Book Detail</h2><br/>
+                            <h2 style={{fontFamily: 'raleway'}}>Book Detail</h2><br/>
                         </div>
                         <Row>
                             <Col xs={12} sm={12} md={6} lg={4} xl={3} style={{paddingBottom: '25px'}}>
@@ -94,18 +94,18 @@ const LocalBookDetail = () =>  {
                             </Col>
                             <Col xs={12} sm={12} md={6} lg={4} xl={4} style={{paddingBottom: '25px'}}>
                                 {console.log(getBook)}
-                                <h2>{getBook.title}</h2>
-                                {getBook.authors && getBook.authors.map((author) => <p key={author}>{author}</p>)}
-                                <p>{getBook.publisher}</p>
-                                <p>{getBook.publishedDate}</p>
+                                <h2 style={{fontFamily: 'raleway'}}>{getBook.title}</h2>
+                                {getBook.authors && getBook.authors.map((author) => <p style={{fontFamily: 'raleway'}} key={author}>{author}</p>)}
+                                <p style={{fontFamily: 'raleway'}}>{getBook.publisher}</p>
+                                <p style={{fontFamily: 'raleway'}}>{getBook.publishedDate}</p>
                             </Col>
                             <Col xs={12} sm={12} md={12} lg={4} xl={5}>
-                                <p>{getBook.description}</p>
+                                <p style={{fontFamily: 'raleway'}}>{getBook.description}</p>
                             </Col>
                         </Row>
                         <Row style={{paddingTop: '25px', paddingBottom: '5px'}}>
                             <Col>
-                                <h3> Reviews </h3>
+                                <h3 style={{fontFamily: 'raleway'}}> Reviews </h3>
                                 <div className="d-flex w-100 justify-content-start">
                                     {[...Array(5)].map((star, i) => {
                                         const ratingValue = i + 1;
@@ -134,9 +134,9 @@ const LocalBookDetail = () =>  {
                         <Row>
                             <Col xs={12} md={12} lg={12} xl={12}>
                                 <form onSubmit={handleSubmit}>
-                                    <textarea style={{marginTop: '5px'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={newReview.comment} onChange={handleChange}/>
+                                    <textarea style={{marginTop: '5px', fontFamily: 'raleway'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={newReview.comment} onChange={handleChange}/>
                                     <br/>
-                                    {' '}<Button style={{marginBottom: '15px', marginTop: '5px'}} type='submit' variant="danger">Submit</Button>
+                                    {' '}<Button style={{marginBottom: '15px', marginTop: '5px', backgroundColor: '#070B04', border: '#070B04', fontFamily: 'raleway'}} type='submit'>Submit</Button>
                                 </form>
                             </Col>
                         </Row>
@@ -148,7 +148,7 @@ const LocalBookDetail = () =>  {
                                     <Row>
                                         <Col xs={12} md={12} lg={12} xl={12}>
                                             <ListGroup className="align-self-start w-80" key={r.bookId}>
-                                                <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#98ffed' }}>
+                                                <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#13200D' }}>
                                                     <Row style={{paddingBottom: '10px'}}>
                                                         <Col>
                                                             <div className="d-flex w-100 justify-content-start">
@@ -167,15 +167,15 @@ const LocalBookDetail = () =>  {
                                                         </Col>
                                                         <Col>
                                                             <div className="d-flex w-100 justify-content-end">
-                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>}{' '}
-                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>}{' '}   
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: 'white', fontFamily: 'raleway'}}>Edit</Link>}{' '}
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link style={{color: 'white', fontFamily: 'raleway'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>}{' '}   
                                                             </div>
 
                                                         </Col>
                                                     </Row>
-                                                    <p className="mb-1" style={{paddingBottom: '5px'}}>{r.comment}</p>
+                                                    <p className="mb-1" style={{paddingBottom: '5px', fontFamily: 'raleway'}}>{r.comment}</p>
                                                     <div className="d-flex w-100 justify-content-end" style={{paddingBottom: '13px'}}>
-                                                        <Link to={`/profile/${r.userId}`} className="nav-link">{r.User.username}</Link> 
+                                                        <Link style={{fontFamily: 'raleway'}} to={`/profile/${r.userId}`} className="nav-link">{r.User.username}</Link> 
                                                     </div>
                                                 </ListGroup.Item>
                                             </ListGroup>
