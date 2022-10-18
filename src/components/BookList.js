@@ -45,14 +45,14 @@ function BookList() {
 
                                                 <Link style= {{color: '#070B04', fontFamily: 'raleway'}} to={'/book/detail'} onClick={() => setBook(book)}>Book Detail</Link>
 
-                                                {/*<Link to={`/book/${book.id}`} onClick={() => setBook(book)}>Book Detail</Link> */}
                                                 </Card.Body>
                                         </Card>
                                         )
                                 } else {
                                     <p style={{fontFamily: 'raleway'}}>No books found 😣</p>
                                 }
-                            })}
+                            }
+                            )}
                         </Row>
                 </div>
                 </Container>

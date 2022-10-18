@@ -14,7 +14,6 @@ import { FaUser } from 'react-icons/fa';
 function Home() {
 
   const ClickIt = () => {
-    // your logic here
     document.getElementById("Clickbutton").click();
   };
 
