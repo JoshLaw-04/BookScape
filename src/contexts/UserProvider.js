@@ -17,7 +17,7 @@ export const UserProvider = (props) => {
         const token = localStorage.getItem('myToken');
         if (token){
             setisLoggedIn(true);
-            const firstName = localStorage.getitem('firstName');
+            const firstName = localStorage.getItem('firstName');
             const userId = localStorage.getItem('userId');
             setLoggedInUser({userId, firstName})
         }
