@@ -19,7 +19,8 @@ const SignIn = () => {
       navigate('/');
     }).catch(error => {
       console.log(error);
-      window.alert('Failed login');
+      window.alert(error.response.data);
+      navigate('/register')
     });
   }
 
