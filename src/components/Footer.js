@@ -8,7 +8,7 @@ function Footer() {
 
     return (
         <footer>   
-            <p>Bookscape &copy; • { month }/{day}/{ year }</p> 
+            <p style={{fontFamily: 'raleway'}}>Bookscape &copy; • { month }/{day}/{ year }</p> 
         </footer>
     )
 }

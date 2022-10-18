@@ -49,14 +49,14 @@ function UserProfile() {
                     <Container style={{paddingBottom: '75px', backgroundColor: 'rgba(99, 125, 71, 0.85)'}}>
                         <Row style={{paddingTop: '25px'}}>
                             <Col xs={3} md={6} lg={4} xl={4}>
-                                <h1>{getUser.username}</h1>
-                                <p style={{paddingLeft: '5px'}}>{getUser.firstName}{' '}{getUser.lastName}</p>
-                                <p style={{paddingLeft: '5px'}}>{getUser.email}</p>
+                                <h1 style={{fontFamily: 'raleway'}}>{getUser.username}</h1>
+                                <p  style={{paddingLeft: '5px', fontFamily: 'raleway'}}>{getUser.firstName}{' '}{getUser.lastName}</p>
+                                <p  style={{paddingLeft: '5px', fontFamily: 'raleway'}}>{getUser.email}</p>
                             </Col>
                         </Row>
                         <Row style={{paddingTop: '50px'}}>
                             <Col>
-                                <h4> Reviews by {getUser.username}</h4>
+                                <h4 style={{fontFamily: 'raleway'}}> Reviews by {getUser.username}</h4>
                             </Col>
                         </Row>
                         {reviews.map((r) => {
@@ -80,7 +80,7 @@ function UserProfile() {
                                                         </Col>
                                                         <Col xs={6} sm={6} md={8} lg={8} xl={9} style={{paddingLeft: '35px'}}>
                                                             <div className="d-flex w-100 justify-content-start" style={{paddingBottom: '13px'}}>
-                                                                <Link to={`/book/${r.Book.bookId}`} className='ml-auto me-2' style={{color: 'white'}}>{r.Book.title}</Link>
+                                                                <Link to={`/book/${r.Book.bookId}`} className='ml-auto me-2' style={{color: 'white', fontFamily: 'raleway'}}>{r.Book.title}</Link>
                                                                 
                                                                 {[...Array(r.starRating)].map((star, i) => {
                                                                         let counter = i + 1;
@@ -94,20 +94,20 @@ function UserProfile() {
 
                                                             </div>
                                                             <div>
-                                                                <p className="mb-1" style={{paddingBottom: '5px'}}>{r.comment}</p>
+                                                                <p className="mb-1" style={{paddingBottom: '5px', fontFamily: 'raleway'}}>{r.comment}</p>
                                                             </div>
                                                         </Col>
                                                         <Col xs={3} sm={3} md={2} lg={2} xl={2}>
                                                             <div className="d-flex w-100 justify-content-end">
-                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: 'white'}}>Edit</Link>}{' '}
-                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link style={{color: 'white'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>}{' '}   
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: 'white', fontFamily: 'raleway'}}>Edit</Link>}{' '}
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link style={{color: 'white', fontFamily: 'raleway'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>}{' '}   
                                                             </div>
 
                                                         </Col>  
                                                     </Row>
                                                     <Row>
                                                         <Col className="d-flex w-100 justify-content-end" style={{paddingBottom: '5px'}}>    
-                                                            <Link to={`/profile/${r.userId}`} className="nav-link">{r.User.username}</Link> 
+                                                            <Link style={{fontFamily: 'raleway'}} to={`/profile/${r.userId}`} className="nav-link">{r.User.username}</Link> 
                                                         </Col>
                                                     </Row>
                                                 </ListGroup.Item>

@@ -55,7 +55,7 @@ function EditReview() {
                 <>
                 <div>
                     <form onSubmit={handleSubmit} style={{paddingLeft: '50px', paddingTop: '50px'}}>
-                        <span style={{fontWeight: 'bold'}}>Star Rating:</span><br/>
+                        <span style={{fontWeight: 'bold', color: 'whitesmoke', fontFamily: 'raleway'}}>Star Rating:</span><br/>
                         <div className="d-flex w-100 justify-content-start">
                             {[...Array(5)].map((star, i) => {
                                 const ratingValue = i + 1;
@@ -79,10 +79,10 @@ function EditReview() {
                                     );
                             })}
                         </div>
-                        <span style={{fontWeight: 'bold'}}>Review:</span><br/>
-                        <textarea type="text" name="comment" rows={3} cols={40} value={editThisReview.comment} onChange={handleChange} />
+                        <span style={{fontWeight: 'bold', color: 'whitesmoke', fontFamily: 'raleway'}}>Review:</span><br/>
+                        <textarea style={{fontFamily: 'raleway'}} type="text" name="comment" rows={3} cols={40} value={editThisReview.comment} onChange={handleChange} />
                         <br></br><br></br>
-                        <Button type='submit' style={{marginBottom: '5px', backgroundColor: '#070B04', border: '#070B04'}}>Update</Button>
+                        <Button type='submit' style={{marginBottom: '5px', backgroundColor: '#070B04', border: '#070B04', fontFamily: 'raleway'}}>Update</Button>
                     </form>
                     
                 </div>

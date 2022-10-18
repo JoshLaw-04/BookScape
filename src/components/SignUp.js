@@ -38,34 +38,34 @@ const SignUp = () => {
 
     return (
         <Container>
-            <div class="d-flex justify-content-center" style={{paddingTop: '75px'}}>
+            <div class="d-flex justify-content-center" style={{paddingTop: '65px'}}>
                 <Row>
                     <Col xs='12' sm='12' md='12' lg='12' xl='12' style={{paddingBottom: '20px'}}>
-                        <h1>REGISTER</h1>
+                        <h1 style={{fontFamily: 'raleway'}}>REGISTER</h1>
                     </Col>
                     <Col xs='12' sm='12' md='12' lg='12' xl='12'>
                         <Form id='signUpForm' onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" >
-                                <Form.Label>Username:</Form.Label>
-                                <Form.Control placeholder='Enter Username' type="text" name="username" required value={newUser.username} onChange={handleChange} />
+                                <Form.Label style={{fontFamily: 'raleway'}}>Username:</Form.Label>
+                                <Form.Control style={{fontFamily: 'raleway'}} placeholder='Enter Username' type="text" name="username" required value={newUser.username} onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" >
-                                <Form.Label>Password:</Form.Label>
-                                <Form.Control placeholder='Enter Password' type="password" name="password" required value={newUser.password} onChange={handleChange} />
+                                <Form.Label style={{fontFamily: 'raleway'}}>Password:</Form.Label>
+                                <Form.Control style={{fontFamily: 'raleway'}} placeholder='Enter Password' type="password" name="password" required value={newUser.password} onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" >
-                                <Form.Label>First Name:</Form.Label>
-                                <Form.Control placeholder='Enter First Name' type="string" name="firstName" required value={newUser.firstName} onChange={handleChange} />
+                                <Form.Label style={{fontFamily: 'raleway'}}>First Name:</Form.Label>
+                                <Form.Control style={{fontFamily: 'raleway'}} placeholder='Enter First Name' type="string" name="firstName" required value={newUser.firstName} onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" >
-                                <Form.Label>Last Name:</Form.Label>
-                                <Form.Control placeholder='Enter Last Name' type="text" name="lastName" required value={newUser.lastName} onChange={handleChange} />
+                                <Form.Label style={{fontFamily: 'raleway'}}>Last Name:</Form.Label>
+                                <Form.Control style={{fontFamily: 'raleway'}} placeholder='Enter Last Name' type="text" name="lastName" required value={newUser.lastName} onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" >
-                                <Form.Label>Email:</Form.Label>
-                                <Form.Control placeholder='Enter Email' type="text" name="email" required value={newUser.email} onChange={handleChange} />
+                                <Form.Label style={{fontFamily: 'raleway'}}>Email:</Form.Label>
+                                <Form.Control style={{fontFamily: 'raleway'}} placeholder='Enter Email' type="text" name="email" required value={newUser.email} onChange={handleChange} />
                             </Form.Group>
-                            <Button type="submit" id="saveBtn" style={{backgroundColor: '#070B04', border: '#070B04'}}>Register</Button>
+                            <Button type="submit" id="saveBtn" style={{backgroundColor: '#070B04', border: '#070B04', fontFamily: 'raleway'}}>Register</Button>
                         </Form>
                     </Col>
                 </Row>
