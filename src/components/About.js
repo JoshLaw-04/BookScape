@@ -43,7 +43,6 @@ function About() {
                     <Col xs='12' sm='12' md='5' lg='5' xl='6'>
                         <img variant="top" src={image} style={{padding: '5px'}} width= '215px' height='200px' alt='teammember'/>
                         <h4>{name}</h4>
-                        
                     </Col>
                     <Col xs='12' sm='12' md='7' lg='7' xl='6'>
                         <p style={{fontWeight: 'bold'}}>{role}</p>
@@ -56,7 +55,7 @@ function About() {
 
   return (
     <Container>
-        <Row style={{paddingTop: '25px', textAlign: 'center'}}>
+        <Row style={{paddingTop: '25px', textAlign: 'center', backgroundColor: 'rgba(99, 125, 71, 0.85)'}}>
             <Col xs='12' sm='12' md='12' lg='12' xl='12' style={{paddingBottom: '50px', paddingTop: '15px'}}>
                 <h1 style={{paddingBottom: '10px'}}>About Us</h1>
                 <div class="d-flex justify-content-center">
