@@ -37,13 +37,13 @@ const SignIn = () => {
             <Form id='signUpForm' onSubmit={handleSubmit} style={{width: '325px'}}>
                   <Form.Group className="mb-3" >
                       <Form.Label>Username:</Form.Label>
-                      <Form.Control placeholder="Enter Username" type="text" name="username" onChange={e => setUsername(e.target.value)} />
+                      <Form.Control placeholder="Enter Username" type="text" name="username" required onChange={e => setUsername(e.target.value)} />
                   </Form.Group>
                   <Form.Group className="mb-3" >
                       <Form.Label>Password:</Form.Label>
-                      <Form.Control placeholder='Enter Password' type="password" name="password" onChange={e => setPassword(e.target.value)} />
+                      <Form.Control placeholder='Enter Password' type="password" name="password" required onChange={e => setPassword(e.target.value)} />
                   </Form.Group>  
-                <Button type="submit" id="saveBtn">Login</Button>
+                <Button type="submit" id="saveBtn" style={{backgroundColor: '#070B04', border: '#070B04'}}>Login</Button>
               </Form>
           </Col>
         </Row>

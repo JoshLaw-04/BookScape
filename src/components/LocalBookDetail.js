@@ -136,7 +136,7 @@ const LocalBookDetail = () =>  {
                                 <form onSubmit={handleSubmit}>
                                     <textarea style={{marginTop: '5px'}} placeholder="Write a Review" type="text" rows={4} cols={40} name="comment" value={newReview.comment} onChange={handleChange}/>
                                     <br/>
-                                    {' '}<Button style={{marginBottom: '15px', marginTop: '5px'}} type='submit' variant="dark">Submit</Button>
+                                    {' '}<Button style={{marginBottom: '15px', marginTop: '5px', backgroundColor: '#070B04', border: '#070B04'}} type='submit'>Submit</Button>
                                 </form>
                             </Col>
                         </Row>
@@ -148,7 +148,7 @@ const LocalBookDetail = () =>  {
                                     <Row>
                                         <Col xs={12} md={12} lg={12} xl={12}>
                                             <ListGroup className="align-self-start w-80" key={r.bookId}>
-                                                <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#1D5C03' }}>
+                                                <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#13200D' }}>
                                                     <Row style={{paddingBottom: '10px'}}>
                                                         <Col>
                                                             <div className="d-flex w-100 justify-content-start">
@@ -167,8 +167,8 @@ const LocalBookDetail = () =>  {
                                                         </Col>
                                                         <Col>
                                                             <div className="d-flex w-100 justify-content-end">
-                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>}{' '}
-                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>}{' '}   
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: 'white'}}>Edit</Link>}{' '}
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link style={{color: 'white'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>}{' '}   
                                                             </div>
 
                                                         </Col>

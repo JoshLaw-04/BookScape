@@ -82,7 +82,7 @@ function EditReview() {
                         <span style={{fontWeight: 'bold'}}>Review:</span><br/>
                         <textarea type="text" name="comment" rows={3} cols={40} value={editThisReview.comment} onChange={handleChange} />
                         <br></br><br></br>
-                        <Button type='submit' variant="danger" style={{marginBottom: '5px'}}>Update</Button>
+                        <Button type='submit' style={{marginBottom: '5px', backgroundColor: '#070B04', border: '#070B04'}}>Update</Button>
                     </form>
                     
                 </div>

@@ -107,7 +107,7 @@ function Home() {
                 value={ search }
                 onChange={ getSearchTerm }
               />
-              <Button id="Clickbutton" onClick={bookSearchReturn} variant="success">Find</Button>
+              <Button id="Clickbutton" onClick={bookSearchReturn} style={{backgroundColor: '#637D47', border: '#637D47'}}>Find</Button>
             </Form>
           </Navbar.Collapse>
         </Container>

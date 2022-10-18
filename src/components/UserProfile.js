@@ -67,7 +67,7 @@ function UserProfile() {
                                     <Row>
                                         <Col xs={12} md={12} lg={12} xl={12}>
                                             <ListGroup className="align-self-start w-80" key={r.reviewId}>
-                                                <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#1D5C03' }}>
+                                                <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#13200D' }}>
                                                     <Row>
                                                         <Col xs={3} sm={3} md={2} lg={2} xl={1}>
                                                             <img 
@@ -80,7 +80,7 @@ function UserProfile() {
                                                         </Col>
                                                         <Col xs={6} sm={6} md={8} lg={8} xl={9} style={{paddingLeft: '35px'}}>
                                                             <div className="d-flex w-100 justify-content-start" style={{paddingBottom: '13px'}}>
-                                                                <Link to={`/book/${r.Book.bookId}`} className='ml-auto me-2'>{r.Book.title}</Link>
+                                                                <Link to={`/book/${r.Book.bookId}`} className='ml-auto me-2' style={{color: 'white'}}>{r.Book.title}</Link>
                                                                 
                                                                 {[...Array(r.starRating)].map((star, i) => {
                                                                         let counter = i + 1;
@@ -99,8 +99,8 @@ function UserProfile() {
                                                         </Col>
                                                         <Col xs={3} sm={3} md={2} lg={2} xl={2}>
                                                             <div className="d-flex w-100 justify-content-end">
-                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: '#000807'}}>Edit</Link>}{' '}
-                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link style={{color: '#000807'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>}{' '}   
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link to={`/edit/${r.reviewId}`} className='ml-auto me-2'  style={{color: 'white'}}>Edit</Link>}{' '}
+                                                                {loggedInUser && loggedInUser.userId === r.userId && <Link style={{color: 'white'}} onClick={handleDelete.bind(this, r.reviewId)}>Delete</Link>}{' '}   
                                                             </div>
 
                                                         </Col>  

@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Card, Container, Row, Stack } from 'react-bootstrap';
 import "./Home.css";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import BookContext from "../contexts/BookContext";
 
 function FeaturedBooks() {
 
-    let { localBooks, getLocalBook } = useContext(BookContext)
+    let { localBooks } = useContext(BookContext)
 
     function localBookList() {
 
@@ -21,7 +21,7 @@ function FeaturedBooks() {
                             <Card.Body>
                                 <Card.Title>{b.title}</Card.Title>
                                 {b.authors.map((author) => <Card.Text key={author}>{author}</Card.Text>)}
-                                <Link to={`/book/${b.bookId}`}>Book Detail</Link>
+                                <Link to={`/book/${b.bookId}`} style= {{color: '#070B04'}}>Book Detail</Link>
                             </Card.Body>
                         </Card>
                     ))}

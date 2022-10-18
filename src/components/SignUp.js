@@ -51,21 +51,21 @@ const SignUp = () => {
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 <Form.Label>Password:</Form.Label>
-                                <Form.Control placeholder='Enter Password' type="password" name="password" value={newUser.password} onChange={handleChange} />
+                                <Form.Control placeholder='Enter Password' type="password" name="password" required value={newUser.password} onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 <Form.Label>First Name:</Form.Label>
-                                <Form.Control placeholder='Enter First Name' type="string" name="firstName" value={newUser.firstName} onChange={handleChange} />
+                                <Form.Control placeholder='Enter First Name' type="string" name="firstName" required value={newUser.firstName} onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 <Form.Label>Last Name:</Form.Label>
-                                <Form.Control placeholder='Enter Last Name' type="text" name="lastName" value={newUser.lastName} onChange={handleChange} />
+                                <Form.Control placeholder='Enter Last Name' type="text" name="lastName" required value={newUser.lastName} onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 <Form.Label>Email:</Form.Label>
-                                <Form.Control placeholder='Enter Email' type="text" name="email" value={newUser.email} onChange={handleChange} />
+                                <Form.Control placeholder='Enter Email' type="text" name="email" required value={newUser.email} onChange={handleChange} />
                             </Form.Group>
-                            <Button type="submit" id="saveBtn">Register</Button>
+                            <Button type="submit" id="saveBtn" style={{backgroundColor: '#070B04', border: '#070B04'}}>Register</Button>
                         </Form>
                     </Col>
                 </Row>

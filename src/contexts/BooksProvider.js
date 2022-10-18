@@ -8,7 +8,6 @@ export const BooksProvider = (props) => {
     const [ search, setSearch ] = useState('');
     const [ searchResults, setSearchResults ] = useState([]);
 
-    const googleVolumeURL = 'https://www.googleapis.com/books/v1/volumes/'
     const googleSearchURL = 'https://www.googleapis.com/books/v1/volumes?q='+search+'&key=AIzaSyDgI3uNznl3nuYZEutbvQBfi-HTTvAzIy0'+'&maxResults=40';
     const localBookURL = 'http://localhost:3000/api/books/';
     const navigate = useNavigate();
