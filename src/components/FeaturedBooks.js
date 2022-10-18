@@ -3,6 +3,7 @@ import { Card, Container, Row, Stack } from 'react-bootstrap';
 import "./Home.css";
 import { Link, Outlet } from "react-router-dom";
 import BookContext from "../contexts/BookContext";
+import forest from './assets/background-image.jpeg'
 
 function FeaturedBooks() {
 
@@ -11,7 +12,7 @@ function FeaturedBooks() {
     function localBookList() {
 
         return (
-            <Container style={{paddingBottom: '75px'}}>
+            <Container style={{paddingBottom: '75px', backgroundImage: `url(${forest})`}}>
                 <h1 style={{paddingTop: '25px', paddingLeft: '7px', paddingBottom: '10px'}}>Book List</h1>
                 <div id="CardsCol">
                     <Row>

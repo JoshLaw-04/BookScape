@@ -3,6 +3,7 @@ import { Card, Container, Row } from 'react-bootstrap';
 import "./Home.css";
 import BookContext from "../contexts/BookContext";
 import { Link } from "react-router-dom";
+import forest from './assets/background-image.jpeg'
 
 function BookList() {
 
@@ -14,7 +15,7 @@ function BookList() {
         ({searchResults}) => {
             
             return (
-                <Container style={{paddingBottom: '75px'}}>
+                <Container style={{paddingBottom: '75px', backgroundImage: `url(${forest})`}}>
                 <h1 style={{paddingTop: '25px', paddingLeft: '7px', paddingBottom: '10px'}}>Book Results</h1>
                 <div id="CardsCol">
                         <Row>
@@ -42,7 +43,7 @@ function BookList() {
                                                     }
                                                     
 
-                                                <Link style= {{color: '#070B04'}} to={'/book/detail'} onClick={() => setBook(book)}>Book Details</Link>
+                                                <Link style= {{color: '#070B04'}} to={'/book/detail'} onClick={() => setBook(book)}>Book Detail</Link>
 
                                                 {/*<Link to={`/book/${book.id}`} onClick={() => setBook(book)}>Book Detail</Link> */}
                                                 </Card.Body>
