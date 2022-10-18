@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Card, Container, Row, Stack } from 'react-bootstrap';
 import "./Home.css";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import BookContext from "../contexts/BookContext";
 
 function FeaturedBooks() {
 
-    let { localBooks, getLocalBook } = useContext(BookContext)
+    let { localBooks } = useContext(BookContext)
 
     function localBookList() {
 
