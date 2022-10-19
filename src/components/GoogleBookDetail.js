@@ -49,7 +49,11 @@ function GoogleBookDetail() {
         setLocalBook(book).then( bookResponse => {
             addReview({...review, bookId: bookResponse.data.bookId}).then(() => {
                 navigate(`/book/${bookResponse.data.bookId}`)
-            })
+            }).catch(error => {
+                console.log(error);
+                window.alert(error.response.data);
+                navigate('/login');
+            });
         })
     }
 

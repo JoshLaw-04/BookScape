@@ -25,11 +25,11 @@ function Home() {
       }
     };
 
-  document.addEventListener('keydown', keyDownHandler);
+    document.addEventListener('keydown', keyDownHandler);
 
-  return () => {
-    document.removeEventListener('keydown', keyDownHandler);
-  };
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
   }, []);
 
   const inputElement = useRef('');

@@ -9,7 +9,6 @@ import UserContext from '../contexts/UserContext';
 
 const LocalBookDetail = () =>  {
 
-    // let {id} = useParams();
     let params = useParams();
     let navigate = useNavigate();
 
@@ -55,6 +54,7 @@ const LocalBookDetail = () =>  {
           navigate(`/book/${getBook.bookId}`);
         }).catch(error => {
           console.log(error);
+          window.alert(error.response.data);
           navigate('/login');
         });
     }
