@@ -9,7 +9,6 @@ import UserContext from '../contexts/UserContext';
 
 const LocalBookDetail = () =>  {
 
-    // let {id} = useParams();
     let params = useParams();
     let navigate = useNavigate();
 
