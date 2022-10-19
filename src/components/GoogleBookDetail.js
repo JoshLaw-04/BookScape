@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import BookContext from '../contexts/BookContext';
 import { FaStar } from 'react-icons/fa';
 import ReviewContext from '../contexts/ReviewsContext';
+import UserContext from '../contexts/UserContext';
 
 function GoogleBookDetail() {
 
@@ -15,6 +16,8 @@ function GoogleBookDetail() {
     //imports from ReviewProvider
     let { addReview } = useContext(ReviewContext);
 
+    //imports from UserProvider
+    let { setisLoggedIn } = useContext(UserContext);
 
     //Star stuff
     const [ rating, setRating ] = useState(null);
@@ -52,6 +55,8 @@ function GoogleBookDetail() {
             }).catch(error => {
                 console.log(error);
                 window.alert(error.response.data);
+                setisLoggedIn(false);
+                localStorage.clear();
                 navigate('/login');
             });
         })
@@ -59,7 +64,7 @@ function GoogleBookDetail() {
 
 
   return (
-    <Container style={{paddingBottom: '75px'}}>
+    <Container style={{paddingBottom: '75px', backgroundColor:'rgba(99, 125, 71, 0.85)'}}>
         <div style={{paddingTop: '15px'}}>
             <h2 style={{fontFamily: 'raleway'}}>Book Detail</h2><br/>
         </div>

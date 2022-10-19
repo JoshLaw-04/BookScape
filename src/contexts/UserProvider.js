@@ -23,20 +23,6 @@ export const UserProvider = (props) => {
         }
     }, []);
 
-    // useEffect(() => {
-    //     async function loadUser() {
-    //         // TODO load token
-    //         const userId = localStorage.getItem('userId');
-    //         if (userId) {
-    //             setisLoggedIn(true);
-    //             const firstName = localStorage.getItem('firstName');
-    //             const token = localStorage.getItem('myToken');
-    //             setLoggedInUser({userId, firstName})
-    //         }
-    //     }
-    //     loadUser();
-    // }, []);
-
     function createUser(newUser) {          
         return axios.post(baseUrl, newUser)
             .then(response => {
@@ -81,6 +67,7 @@ export const UserProvider = (props) => {
         <UserContext.Provider value={{
             loggedInUser,
             isLoggedIn,
+            setisLoggedIn,
             createUser,
             signInUser,
             signOutUser,

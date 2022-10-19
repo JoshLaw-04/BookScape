@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import ReviewContext from "../contexts/ReviewsContext";
 import { FaStar } from 'react-icons/fa';
+import UserContext from "../contexts/UserContext";
 
 
 function EditReview() {
@@ -10,6 +11,7 @@ function EditReview() {
     let {id} = useParams();
     let navigate = useNavigate();
     let {editReview, getReview } = useContext(ReviewContext);
+    let { setisLoggedIn } = useContext(UserContext);
 
     let [editThisReview, setEditThisReview] = useState({
         comment: "",
@@ -41,7 +43,9 @@ function EditReview() {
             alert('Update was successful!');
         }).catch(error => {
             console.log(error);
-            navigate('/login');
+            setisLoggedIn(false);
+            localStorage.clear();
+            navigate('/login'); 
         });
     }
 

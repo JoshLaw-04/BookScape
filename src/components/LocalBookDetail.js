@@ -14,7 +14,7 @@ const LocalBookDetail = () =>  {
 
     let { getLocalBook } = useContext(BookContext);
     let { deleteReview, addReview } = useContext(ReviewContext);
-    let { loggedInUser } = useContext(UserContext);
+    let { loggedInUser, setisLoggedIn } = useContext(UserContext);
     
     let [getBook, setGetBook] = useState("")
 
@@ -36,6 +36,8 @@ const LocalBookDetail = () =>  {
                 setGetBook(getBook)
             }).catch(error => {
                 console.log(error);
+                setisLoggedIn(false);
+                localStorage.clear();
                 navigate('/login')
             })
           }
@@ -93,7 +95,6 @@ const LocalBookDetail = () =>  {
                                 />{" "}
                             </Col>
                             <Col xs={12} sm={12} md={6} lg={4} xl={4} style={{paddingBottom: '25px'}}>
-                                {console.log(getBook)}
                                 <h2 style={{fontFamily: 'raleway'}}>{getBook.title}</h2>
                                 {getBook.authors && getBook.authors.map((author) => <p style={{fontFamily: 'raleway'}} key={author}>{author}</p>)}
                                 <p style={{fontFamily: 'raleway'}}>{getBook.publisher}</p>
@@ -183,7 +184,6 @@ const LocalBookDetail = () =>  {
                                     </Row>
                                     </>
                                     }
-                                    
                                 </>
                             )
                             

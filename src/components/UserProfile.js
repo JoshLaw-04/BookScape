@@ -12,7 +12,7 @@ function UserProfile() {
     let {id} = useParams();
     let navigate = useNavigate();
 
-    let { getUserProfile, loggedInUser } = useContext(UserContext);
+    let { getUserProfile, loggedInUser, setisLoggedIn } = useContext(UserContext);
     let { deleteReview } = useContext(ReviewContext);
     
     let [getUser, setGetUser] = useState("")
@@ -25,7 +25,10 @@ function UserProfile() {
                 setGetUser(getUser)
             }).catch(error => {
                 console.log(error);
-                navigate('/login')
+                window.alert(error.response.data + 'to view this profile');
+                setisLoggedIn(false);
+                localStorage.clear();
+                navigate('/login');
             })
           }
           fetch()
@@ -36,6 +39,8 @@ function UserProfile() {
             navigate(`/profile/${getUser.userId}`)
         }).catch(error => {
             console.log(error);
+            setisLoggedIn(false);
+            localStorage.clear();
             navigate('/login');
         });
     }
