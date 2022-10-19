@@ -24,13 +24,13 @@ function About() {
         },
         {
             name: 'Stephanie Delgado', 
-            role: 'Frontend Developer',
+            role: 'Full Stack Developer',
             about: 'A problem solver with a love for research. Stephanie started learning to code in 2019, though it began as more of a hobby than a career focus. After a college education in Psychology and continuing to pursue that hobby by enlisting in a coding Bootcamp in 2021, Stephanie discovered another passion, her love for coding. Her ultimate goal is to utilize her knowledge and experience in behavioral health and her new software skills to continue serving underserved communities.', 
             image: stephanie
         },
         {
             name: 'Joshua Law', 
-            role: 'Frontend Developer',
+            role: 'Full Stack Developer',
             image: josh,
             about: 'From a young age, Josh was involved in the tech industry. His parents own a website design company, and his love for the industry bloomed through many fireplace business chats. Within a month, he had buried himself in coding content and decided to sign up for Bethel Tech’s Full stack web design program. Besides his passion for coding and web design, he loves rock climbing, the great outdoors, boating and bodybuilding.'
         }
