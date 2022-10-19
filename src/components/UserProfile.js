@@ -64,14 +64,15 @@ function UserProfile() {
                                 <h4 style={{fontFamily: 'raleway'}}> Reviews by {getUser.username}</h4>
                             </Col>
                         </Row>
-                        {reviews.map((r) => {
+                        {
+                            reviews.map((r) => {
                             return (
                                 <>
                                     {getUser.userId === r.userId && 
                                     <>
-                                    <Row>
+                                    <Row key={r.reviewId}>
                                         <Col xs={12} md={12} lg={12} xl={12}>
-                                            <ListGroup className="align-self-start w-80" key={r.reviewId}>
+                                            <ListGroup className="align-self-start w-80">
                                                 <ListGroup.Item style={{ padding: '15px', margin: '25px', marginLeft: '3px', textAlign: 'left', paddingBottom: '2px', backgroundColor: '#13200D' }}>
                                                     <Row>
                                                         <Col xs={3} sm={3} md={2} lg={2} xl={1}>

@@ -29,7 +29,6 @@ export const BooksProvider = (props) => {
 
     function searchHandler(search) {
         setSearch(search);
-        console.log(search);
     }
     
     function bookSearchReturn() {

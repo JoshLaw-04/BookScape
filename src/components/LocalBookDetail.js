@@ -158,6 +158,7 @@ const LocalBookDetail = () =>  {
                                                                         let counter = i + 1;
                                                                         return(
                                                                             <FaStar
+                                                                                key={counter}
                                                                                 value={counter}
                                                                                 color={'ffc107'}
                                                                             />

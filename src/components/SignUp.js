@@ -9,11 +9,11 @@ import "./Home.css";
 
 const SignUp = () => {
     let [ newUser, setNewUser] = useState({
-        username: null,
-        password: null,
-        firstName: null,
-        lastName: null,
-        email: null
+        username: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        email: ""
     })
 
     let { createUser } = useContext(UserContext);
@@ -38,7 +38,7 @@ const SignUp = () => {
 
     return (
         <Container>
-            <div class="d-flex justify-content-center" style={{paddingTop: '65px'}}>
+            <div className="d-flex justify-content-center" style={{paddingTop: '65px'}}>
                 <Row>
                     <Col xs='12' sm='12' md='12' lg='12' xl='12' style={{paddingBottom: '20px'}}>
                         <h1 style={{fontFamily: 'raleway'}}>REGISTER</h1>
