@@ -83,3 +83,8 @@ p {
     color: whitesmoke;
 }
 
+@media (max-width: 1200px) {
+    #arrow {
+        display: none;
+    }   
+}

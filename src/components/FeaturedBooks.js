@@ -13,7 +13,7 @@ function FeaturedBooks() {
 
         return (
             <Container style={{paddingBottom: '75px', backgroundImage: `url(${forest})`}}>
-                <h1 style={{paddingTop: '25px', paddingLeft: '7px', paddingBottom: '10px', fontFamily: 'raleway'}}>Book List</h1>
+                <h1 style={{paddingTop: '25px', paddingLeft: '7px', paddingBottom: '10px', fontFamily: 'raleway'}}>Featured Books</h1>
                 <div id="CardsCol">
                     <Row>
                     {localBooks.map((b) => (

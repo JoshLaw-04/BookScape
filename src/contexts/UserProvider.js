@@ -48,6 +48,7 @@ export const UserProvider = (props) => {
         
     function signOutUser() {
         setisLoggedIn(false);
+        setLoggedInUser({userId: null, firstName: ""})
         localStorage.clear();
     }
 

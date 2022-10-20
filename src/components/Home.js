@@ -6,6 +6,7 @@ import { Link, Outlet } from "react-router-dom";
 import BookContext from "../contexts/BookContext";
 import "./Home.css";
 import logo from './assets/Bookscape.png'
+import arrow from './assets/arrow.png'
 import Footer from "./Footer";
 import UserContext from "../contexts/UserContext";
 import { FaUser } from 'react-icons/fa';
@@ -96,6 +97,10 @@ function Home() {
                { isLoggedIn === true ? authLink : guestLink }
               </>
             </Nav>
+            <div>
+              <p style={{fontFamily: 'raleway', paddingTop: '20px', paddingRight: '15px'}}>Your next adventure awaits</p>
+            </div>
+            <img id='arrow' style={{paddingRight: '5px'}} src={arrow} width= '150px' height='50px' alt="arrow pointing right"></img>
             <Form className="d-flex">
               <Form.Control
                 ref={ inputElement }

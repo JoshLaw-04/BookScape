@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import ReviewContext from "../contexts/ReviewsContext";
 import { FaStar } from 'react-icons/fa';
@@ -56,8 +56,9 @@ function EditReview() {
        {
         () => {
             return (
-                <>
-                <div>
+                <Container style={{backgroundColor:'rgba(99, 125, 71, 0.85)'}}>
+                <div style={{paddingTop: '15px'}}>
+                <h2 style={{fontFamily: 'raleway'}}>Edit Review</h2><br/>
                     <form onSubmit={handleSubmit} style={{paddingLeft: '50px', paddingTop: '50px'}}>
                         <span style={{fontWeight: 'bold', color: 'whitesmoke', fontFamily: 'raleway'}}>Star Rating:</span><br/>
                         <div className="d-flex w-100 justify-content-start">
@@ -93,7 +94,7 @@ function EditReview() {
                 <div style={{paddingBottom: '432px'}}>
 
                 </div>
-                </>
+                </Container>
                 
             )
         }
