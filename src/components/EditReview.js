@@ -58,8 +58,8 @@ function EditReview() {
             return (
                 <Container style={{backgroundColor:'rgba(99, 125, 71, 0.85)'}}>
                 <div style={{paddingTop: '15px'}}>
-                <h2 style={{fontFamily: 'raleway'}}>Edit Review</h2><br/>
-                    <form onSubmit={handleSubmit} style={{paddingLeft: '50px', paddingTop: '50px'}}>
+                <h2 style={{fontFamily: 'raleway', paddingLeft: '50px'}}>Edit Review</h2><br/>
+                    <form onSubmit={handleSubmit} style={{paddingLeft: '50px', paddingTop: '15px'}}>
                         <span style={{fontWeight: 'bold', color: 'whitesmoke', fontFamily: 'raleway'}}>Star Rating:</span><br/>
                         <div className="d-flex w-100 justify-content-start">
                             {[...Array(5)].map((star, i) => {
